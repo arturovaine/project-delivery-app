@@ -9,16 +9,16 @@ module.exports = {
         autoIncrement: true,
       },
       name: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(100),
         unique: true,
         allowNull: false,
       },
       price: {
-        type: Sequelize.DECIMAL,
+        type: Sequelize.DECIMAL(4,2),
         allowNull: false,
       },
       url_image: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(200),
         allowNull: false,
         defaultValue: '',
       }
