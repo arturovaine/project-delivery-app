@@ -2,7 +2,7 @@
 import db from '.';
 // import { Sequelize, DataTypes } from 'sequelize';
 
-export const UserModel = (sequelize, DataTypes) => {
+export const ProductModel = (sequelize, DataTypes) => {
 
   const Product = sequelize.define('Product', {
     id: {
