@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <span className="logo">TRYBE</span>
       <object className="rocksGlass" type="image/svg+xml" data={ rockGlass }>
-        Glass
+        Delivery
       </object>
     </div>
   );
