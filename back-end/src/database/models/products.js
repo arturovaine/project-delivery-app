@@ -32,6 +32,10 @@ export const ProductModel = (sequelize, DataTypes) => {
     underscored: true,
   });
 
+  Product.associate = (models) => {
+    Product.hasMany(models.SalesProducts);
+  }
+
   return Product;
 }
 
