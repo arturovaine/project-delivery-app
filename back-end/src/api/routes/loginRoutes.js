@@ -1,12 +1,8 @@
 const express = require('express');
+const ControllerUsers = require('../controllers/ControllerUsers');
+
 const router = express.Router();
-const app = require('app');
 
-const ControllerLogin = (_req, res) => res.status(418).end()
+router.post('/', ControllerUsers.login);
 
-app.get('/', ControllerLogin);
-// app.get('/login', ControllerLogin);
-
-// app.get('/', ControllerLogin.login);
-// app.get('/login', ControllerLogin.login);
-// app.get('/register', ControllerLogin.register);
+module.exports = router;
