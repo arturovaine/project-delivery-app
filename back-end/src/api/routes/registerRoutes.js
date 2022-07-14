@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const app = require('app');
 
 const ControllerRegister = (_req, res) => res.status(418).end()
 
-app.get('/register', ControllerRegister);
+router.get('/register', ControllerRegister);
 
-// app.get('/register', ControllerRegister.register);
+// router.get('/register', ControllerRegister.register);
+
+module.exports = router;

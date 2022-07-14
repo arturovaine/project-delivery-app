@@ -1,12 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const app = require('app');
+const ControllerUsers = require('../controllers/ControllerUsers');
 
-const ControllerLogin = (_req, res) => res.status(418).end()
+router.get('/', ControllerUsers.login);
 
-app.get('/', ControllerLogin);
-// app.get('/login', ControllerLogin);
-
-// app.get('/', ControllerLogin.login);
-// app.get('/login', ControllerLogin.login);
-// app.get('/register', ControllerLogin.register);
+module.exports = router;
