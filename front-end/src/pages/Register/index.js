@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
+import EmailPasswordValidation from '../../util/EmailPasswordValidation';
 
 const RegisterPage = () => {
   const [name, setName] = useState('');
@@ -9,11 +10,13 @@ const RegisterPage = () => {
   const [isSubmitButtonDisabled, setDisabled] = useState(true);
 
   useEffect(() => {
+    const TWELVE = 12;
     const validation = EmailPasswordValidation(email, password);
+    const namevalidation = name >= TWELVE;
 
-    if (validation === true) setDisabled(false);
+    if (validation === true && namevalidation === true) setDisabled(false);
     else setDisabled(true);
-  }, [email, password]);
+  }, [name, email, password]);
 
   return (
     <form id="register-form">
