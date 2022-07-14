@@ -1,8 +1,7 @@
 'use strict';
-import db from '.';
-// import { Sequelize, DataTypes } from 'sequelize';
+const db = require('.');
 
-export const ProductModel = (sequelize, DataTypes) => {
+const ProductModel = (sequelize, DataTypes) => {
 
   const Product = sequelize.define('Product', {
     id: {
@@ -39,4 +38,5 @@ export const ProductModel = (sequelize, DataTypes) => {
   return Product;
 }
 
+module.exports = ProductModel;
  
