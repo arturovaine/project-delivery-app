@@ -6,6 +6,7 @@ import logo from '../../images/logo.png';
 import EmailPasswordValidation from '../../util/EmailPasswordValidation';
 import Button from '../../components/Button';
 import TextInput from '../../components/TextInput';
+import './style.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
