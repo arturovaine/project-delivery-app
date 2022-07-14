@@ -7,7 +7,7 @@ const createUser = async (name, email, password) => {
   } catch (err) {
     throw new Error('Erro na model de criação de usuário.');
   }
-}
+};
 
 const findUser = async (email) => {
   try {
@@ -16,7 +16,6 @@ const findUser = async (email) => {
   } catch (err) {
     throw new Error('Erro para encontrar usuário cadastrado.');
   }
-  
-}
+};
 
-module.exports = {createUser, findUser};
+module.exports = { createUser, findUser };
