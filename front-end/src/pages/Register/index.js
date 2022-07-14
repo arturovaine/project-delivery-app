@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 
@@ -6,6 +6,14 @@ const RegisterPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isSubmitButtonDisabled, setDisabled] = useState(true);
+
+  useEffect(() => {
+    const validation = EmailPasswordValidation(email, password);
+
+    if (validation === true) setDisabled(false);
+    else setDisabled(true);
+  }, [email, password]);
 
   return (
     <form id="register-form">
@@ -35,7 +43,7 @@ const RegisterPage = () => {
       />
 
       <Button
-        disabled={ false }
+        disabled={ isSubmitButtonDisabled }
         label="CADASTRAR"
         buttonType="primary-button"
         testId="common_register__button-register"
