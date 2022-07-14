@@ -5,6 +5,7 @@ import logo from '../../images/logo.png';
 // import { requestLogin } from '../services/requests';
 import EmailPasswordValidation from '../../util/EmailPasswordValidation';
 import Button from '../../components/Button';
+import TextInput from '../../components/TextInput';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -49,32 +50,29 @@ const Login = () => {
       <img src={ logo } alt="Logo do App de Delivery" />
       <form>
         <h1>App de Delivery</h1>
-        <label htmlFor="email-input">
-          <input
-            className="login_input"
-            type="text"
-            value={ email }
-            onChange={ ({ target: { value } }) => setEmail(value) }
-            data-testid="common_login__input-email"
-            placeholder="Email"
-          />
-        </label>
-        <label htmlFor="password-input">
-          <input
-            className="password_input"
-            type="password"
-            value={ password }
-            onChange={ ({ target: { value } }) => setPassword(value) }
-            data-testid="common_login__input-password"
-            placeholder="Senha"
-          />
-        </label>
+        <TextInput
+          label="E-mail"
+          testId="common_login__input-email"
+          onChange={ ({ target: { value } }) => setEmail(value) }
+          password={ false }
+          placeholder="seu-email@site.com.br"
+          value={ email }
+        />
+        <TextInput
+          label="Senha"
+          testId="common_login__input-password"
+          onChange={ ({ target: { value } }) => setPassword(value) }
+          password
+          placeholder="Sua senha"
+          value={ password }
+        />
+
         <Button
           disabled={ buttonLoginDisabled }
           label="LOGIN"
           buttonType="primary-button"
           testId="common_login__button-login"
-          onClick={ (event) => login(event) }
+          onClick={ () => console.log('Not implemented') }
         />
         <Button
           disabled={ false }
