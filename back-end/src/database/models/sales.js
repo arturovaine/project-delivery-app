@@ -36,17 +36,17 @@ const SaleModel = (sequelize, DataTypes) => {
       allowNull: false,
       field: 'total_price',
     },
-    delivery_address: {
+    deliveryAddress: {
       type: DataTypes.STRING(100),
       allowNull: false,
       field: 'delivery_address',
     },
-    delivery_number: {
+    deliveryNumber: {
       type: DataTypes.STRING(50),
       allowNull: false,
       field: 'delivery_number',
     },
-    sale_date: {
+    saleDate: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,
       allowNull: false,
@@ -59,7 +59,7 @@ const SaleModel = (sequelize, DataTypes) => {
     },
   }, {
     sequelize: db,
-    modelName: 'sales',
+    tableName: 'sales',
     timestamps: false,
     underscored: true,
   });

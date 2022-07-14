@@ -11,7 +11,7 @@ const createUser = async (name, email, password) => {
 
 const findUser = async (email) => {
   try {
-    const userExists = await User.findOne({ email });
+    const userExists = await User.findOne({ where: { email } });
     return userExists;
   } catch (err) {
     throw new Error('Erro para encontrar usuário cadastrado.');
