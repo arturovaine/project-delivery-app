@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import logo from '../images/logo.png';
+import logo from '../../images/logo.png';
 // import Header from '../components/Header';
 // import { requestLogin } from '../services/requests';
+import EmailPasswordValidation from '../../util/EmailPasswordValidation';
+import Button from '../../components/Button';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   //  const [isLogged, setIsLogged] = useState(false);
-  //  const [failedTryLogin, setFailedTryLogin] = useState(false);
+  // const [failedTryLogin, setFailedTryLogin] = useState(false);
   const [buttonLoginDisabled, setbuttonLoginDisabled] = useState(true);
 
   const history = useHistory();
@@ -36,13 +38,9 @@ const Login = () => {
   if (isLogged) return <Redirect to="" />; */
 
   useEffect(() => {
-    const number = 6;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const validation = EmailPasswordValidation(email, password);
 
-    const validEmail = emailRegex.test(email);
-    const validPassword = password.length >= number;
-
-    if (validEmail === true && validPassword === true) setbuttonLoginDisabled(false);
+    if (validation === true) setbuttonLoginDisabled(false);
     else setbuttonLoginDisabled(true);
   }, [email, password]);
 
@@ -57,7 +55,7 @@ const Login = () => {
             type="text"
             value={ email }
             onChange={ ({ target: { value } }) => setEmail(value) }
-            data-testid="1"
+            data-testid="common_login__input-email"
             placeholder="Email"
           />
         </label>
@@ -67,38 +65,38 @@ const Login = () => {
             type="password"
             value={ password }
             onChange={ ({ target: { value } }) => setPassword(value) }
-            data-testid="2"
+            data-testid="common_login__input-password"
             placeholder="Senha"
           />
         </label>
-        {/*         {
-          (failedTryLogin)
-            ? (
-              <p data-testid="5">
-                {
-                  `O endereço de e-mail ou a senha não estão corretos.
-                    Por favor, tente novamente.`
-                }
-              </p>
-            )
-            : null
-        } */}
-        <button
-          data-testid="3"
-          type="submit"
+        <Button
           disabled={ buttonLoginDisabled }
+          label="LOGIN"
+          buttonType="primary-button"
+          testId="common_login__button-login"
           onClick={ (event) => login(event) }
-        >
-          LOGIN
-        </button>
-        <button
-          data-testid="4"
-          type="submit"
+        />
+        <Button
+          disabled={ false }
+          label="Ainda não tenho conta"
+          buttonType="terciary-button"
+          testId="common_login__button-register"
           onClick={ () => history.push('/register') }
-        >
-          Ainda não tenho conta
-        </button>
+        />
       </form>
+
+      {/* {
+        (failedTryLogin)
+          ? (
+            <p data-testid="common_login__element-invalid-email">
+              {
+                `O endereço de e-mail ou a senha não estão corretos.
+                  Por favor, tente novamente.`
+              }
+            </p>
+          )
+          : null
+      } */}
     </section>
   );
 };
