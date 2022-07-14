@@ -26,7 +26,7 @@ const ProductModel = (sequelize, DataTypes) => {
     }
   }, {
     sequelize: db,
-    modelName: 'products',
+    tableName: 'products',
     timestamps: false,
     underscored: true,
   });

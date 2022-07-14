@@ -28,7 +28,7 @@ const UserModel = (sequelize, DataTypes) => {
     },
   }, {
     sequelize: db,
-    modelName: 'users',
+    tableName: 'users',
     timestamps: false,
   });
 
