@@ -15,9 +15,9 @@ const create = async (name, email, password) => {
 
 const login = async (email, password) => {
   const userToLogin = await findUser(email);
-  const { name, password: pwd, role } = userToLogin;
-
+  
   if (userToLogin) {
+    const { name, password: pwd, role } = userToLogin;
     const md5Password = md5(password);
     if (md5Password === pwd) {
       const token = jwtSign({ name, email, role });
