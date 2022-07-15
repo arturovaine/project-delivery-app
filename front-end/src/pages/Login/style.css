@@ -1,0 +1,9 @@
+img {
+  width: 150px;
+  height: 150px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
