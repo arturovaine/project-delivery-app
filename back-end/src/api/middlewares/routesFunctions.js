@@ -7,11 +7,8 @@ const emailRegex = {
   p3: '[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$',
 };
 
-// https://andrewwoods.net/blog/2018/name-validation-regex/
-const nameRegex = {
-  p1: '/^[A-Za-z\\x{00C0}-\\x{00FF}][A-Za-z\\x{00C0}-\\x{00FF}\'\\-]+',
-  p2: '([\\ A-Za-z\\x{00C0}-\\x{00FF}][A-Za-z\\x{00C0}-\\x{00FF}\'\\-]+)*/u',
-};
+// https://stackoverflow.com/questions/275160/regex-for-names#2044909
+const nameRegex = /^([ \u00c0-\u01ffa-zA-Z'\\-])+$/;
   
 const isEmailValid = (email = '') => {
   const validateEmailRegex = Object.values(emailRegex).reduce((prev, next) => prev + next);
@@ -32,8 +29,7 @@ const isPasswordValid = (password = '') => {
 };
 
 const isNameValid = (name = '') => {
-  const validNameRegex = Object.values(nameRegex).reduce((prev, next) => prev + next);
-  const regex = new RegExp(validNameRegex);
+  const regex = new RegExp(nameRegex);
 
   if (name.length < 1) throw new CustomError(400, 'name must be informed');
   if (name.length < 12) {
@@ -44,4 +40,24 @@ const isNameValid = (name = '') => {
   return true;
 };
 
-module.exports = { isEmailValid, isPasswordValid, isNameValid };
+const validLoginKeys = (req) => {
+  const keys = ['email', 'password'];
+  const loginKeys = Object.keys(req.body);
+  const isValid = loginKeys.every((e, i) => e === keys[i]);
+  if (!isValid) throw new CustomError(400, 'information invalid');
+};
+
+const validRegisterKeys = (req) => {
+  const keys = ['name', 'email', 'password'];
+  const registerKeys = Object.keys(req.body);
+  const isValid = registerKeys.every((e, i) => e === keys[i]);
+  if (!isValid) throw new CustomError(400, 'information invalid');
+};
+
+module.exports = { 
+  isEmailValid, 
+  isPasswordValid, 
+  isNameValid,
+  validLoginKeys,
+  validRegisterKeys,
+ };
