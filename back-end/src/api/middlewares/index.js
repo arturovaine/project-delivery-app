@@ -1,4 +1,6 @@
 const CustomErrors = require('../errors/customErrors');
+const { jwtVerify } = require('../jwt');
+
 const { 
   isEmailValid, 
   isNameValid, 
@@ -42,4 +44,15 @@ const verifyRegister = (req, res, next) => {
   }
 };
 
-module.exports = { verifyLogin, verifyRegister };
+const verifyToken = (req, res, next) => {
+  try {
+    const { authorization } = req.headers;
+    if (!authorization) return res.status(401).send({ error: 'Unauthorized' });
+    const checkAuth = jwtVerify(authorization);
+    if (checkAuth) return next();
+  } catch (err) {
+    return res.status(401).send({ error: err.message });
+  }
+};
+
+module.exports = { verifyLogin, verifyRegister, verifyToken };
