@@ -8,13 +8,13 @@ const MOCK_EMAIL = 'mail@example.com';
 const MOCK_PASSWORD = 'password_example';
 
 describe('Verifica se os elementos da tela de cadastro estão com os data-testids corretos', () => {
-  test('Verifica o botão de cadastro, na tela register, com o data-testid correto.', () => {
+  test('Verifica data-testid do botão de cadastro.', () => {
     render(<Register />);
     const btnRegister = screen.getByTestId('common_login__button-register');
     expect(btnRegister).toBeInTheDocument();
   });
 
-  test('Verifica o elemento de erro de cadastro, da tela register, com o data-testid correto.', () => {
+  test('Verifica data-testid do elemento de erro de cadastro.', () => {
     render(<Register />);
     
     const inputName = screen.getByTestId('common_register__input-name');
