@@ -2,7 +2,10 @@ const { Product } = require('../../database/models');
 
 const create = () => {};
 
-const readAll = () => {};
+const readAll = async () => {
+  const products = await Product.findAll();
+  return products;
+};
 
 const readOne = () => {};
 
