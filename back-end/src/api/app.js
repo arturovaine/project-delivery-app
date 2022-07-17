@@ -11,6 +11,8 @@ const ordersRoutes = require('./routes/ordersRoutes');
 const app = express();
 app.use(cors());
 app.use(express.json());
+// https://www.positronx.io/how-to-serve-static-files-css-js-images-in-express-js/
+app.use(express.static('public'));
 
 app.use('/login', loginRoutes);
 app.use('/register', registerRoutes);
