@@ -4,8 +4,8 @@ const CustomError = require('../errors/customErrors');
 const createUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
-    await ServiceUsers.create(name, email, password);
-    return res.status(201).end();
+    const user = await ServiceUsers.create(name, email, password);
+    return res.status(201).json(user);
   } catch (err) {
     if (err instanceof CustomError) {
       return res.status(err.statusCode).send({ error: err.message });

@@ -8,7 +8,9 @@ const create = async (name, email, password) => {
   if (!userExists) {
     const hashPassword = md5(password);
     const newUser = await createUser(name, email, hashPassword);
-    return newUser;
+    const { name: n, email: e, role } = newUser;
+    const token = jwtSign({ n, e, role });
+    return { name, email, role, token };
   }
   throw new CustomErrors(409, 'User already exists');
 };
