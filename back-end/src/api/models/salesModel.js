@@ -52,13 +52,20 @@ const updateSaleStatus = async (saleId, status) => {
   }
 };
 
-const deleteSale = async () => {};
+const deleteOneSale = async (id) => {
+  try {
+    const deletedSale = await Sale.destroy({ where: { id } });
+    return deletedSale;
+  } catch (error) {
+    throw new CustomErrors(500, error.message);
+  }
+};
 
 module.exports = {
   create, 
   readOne, 
   readAllByUserId, 
   updateSaleStatus, 
-  deleteSale,
+  deleteOneSale,
   readAllBySellerId,
  };
