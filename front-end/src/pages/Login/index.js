@@ -4,7 +4,7 @@ import logo from '../../images/logo.png';
 import EmailPasswordValidation from '../../util/EmailPasswordValidation';
 import Button from '../../components/Button';
 import TextInput from '../../components/TextInput';
-import { requestLogin } from '../../services/api';
+import { postRequest } from '../../services/api';
 import './style.css';
 
 const Login = () => {
@@ -22,7 +22,7 @@ const Login = () => {
     try {
       const endpoint = '/login';
 
-      const { token, user } = await requestLogin(endpoint, { email, password });
+      const { token, user } = await postRequest(endpoint, { email, password });
 
       localStorage.setItem('user', JSON.stringify({ token, ...user }));
       setIsLogged(true);
