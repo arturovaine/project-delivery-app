@@ -5,7 +5,7 @@ const createUser = async (name, email, password) => {
     const newUser = await User.create({ name, email, password, role: 'customer' });
     return newUser;
   } catch (err) {
-    throw new Error('Erro na model de criação de usuário.');
+    throw new Error('Error in user creation');
   }
 };
 
