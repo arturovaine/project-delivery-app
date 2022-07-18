@@ -18,4 +18,13 @@ const findUser = async (email) => {
   }
 };
 
-module.exports = { createUser, findUser };
+const findAllSellers = async () => {
+  try {
+    const seller = await User.findAll({ where: { role: 'seller' } });
+    return seller;
+  } catch (error) {
+    throw new Error('Something went wrong with seller list');
+  }
+};
+
+module.exports = { createUser, findUser, findAllSellers };
