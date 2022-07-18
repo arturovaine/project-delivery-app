@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
-import TextInput from '../../components/TextInput';
-import Button from '../../components/Button';
-import EmailPasswordValidation from '../../util/EmailPasswordValidation';
-import { postRequest } from '../../services/api';
+import TextInput from '../../../components/TextInput';
+import Button from '../../../components/Button';
+import EmailPasswordValidation from '../../../util/EmailPasswordValidation';
+import { postRequest } from '../../../services/api';
 
 const RegisterPage = () => {
   const [name, setName] = useState('');

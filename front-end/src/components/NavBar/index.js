@@ -5,12 +5,14 @@ import './style.css';
 const NavBar = () => {
   const history = useHistory();
 
-  const { name, role } = JSON.parse(localStorage.getItem('user'));
+  // const { name, role } = JSON.parse(localStorage.getItem('user'));
+  const name = 'Fulano';
+  const role = 'customer';
 
   const Products = (
     <button
       data-testid="customer_products__element-navbar-link-products"
-      onClick={ history.push('/customer/products') }
+      onClick={ () => { history.push('/customer/products'); } }
       type="button"
     >
       PRODUTOS
@@ -20,7 +22,7 @@ const NavBar = () => {
   const MyOrders = (
     <button
       data-testid="customer_products__element-navbar-link-orders"
-      onClick={ history.push('/customer/orders') }
+      onClick={ () => { history.push('/customer/orders'); } }
       type="button"
     >
       MEUS PEDIDOS
@@ -30,7 +32,7 @@ const NavBar = () => {
   const ManageOrders = (
     <button
       data-testid="customer_products__element-navbar-link-orders"
-      onClick={ history.push('/seller/orders') }
+      onClick={ () => { history.push('/seller/orders'); } }
       type="button"
     >
       PEDIDOS
@@ -48,9 +50,10 @@ const NavBar = () => {
 
   return (
     <div className="nav-bar">
-      { role === 'customer' && <MyOrders /> && <Products /> }
-      { role === 'seller' && <ManageOrders /> }
-      { role === 'admin' && <ManageUsers /> }
+      { role === 'customer' && MyOrders }
+      { role === 'customer' && Products }
+      { role === 'seller' && ManageOrders }
+      { role === 'admin' && ManageUsers }
       <div className="user-name">
         <span
           data-testid="customer_products__element-navbar-user-full-name"
