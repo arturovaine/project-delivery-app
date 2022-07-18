@@ -1,4 +1,4 @@
-const { Sale } = require('../../database/models');
+const { Sale, SalesProducts } = require('../../database/models');
 const CustomErrors = require('../errors/customErrors');
 
 const create = async (saleData) => {
@@ -27,6 +27,17 @@ const readOne = async (id) => {
   try {
     const sale = await Sale.findByPk(id);
     return sale;
+  } catch (error) {
+    throw new CustomErrors(500, error.message);
+  }
+};
+
+const findSaleAndRelatedProducts = async (userId) => {
+  try {
+    const saleAndProduct = await Sale.findAll({ 
+      where: { userId }, include: [{ model: SalesProducts }], 
+    });
+    return saleAndProduct;
   } catch (error) {
     throw new CustomErrors(500, error.message);
   }
@@ -70,7 +81,8 @@ const deleteOneSale = async (id) => {
 
 module.exports = {
   create, 
-  readOne, 
+  readOne,
+  findSaleAndRelatedProducts, 
   readAllByUserId, 
   updateSaleStatus, 
   deleteOneSale,
