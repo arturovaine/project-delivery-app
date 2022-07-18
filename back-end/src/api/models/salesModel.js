@@ -32,10 +32,21 @@ const readOne = async (id) => {
   }
 };
 
-const findSaleAndRelatedProducts = async (userId) => {
+const findSaleAndRelatedProductsByUserId = async (userId) => {
   try {
     const saleAndProduct = await Sale.findAll({ 
       where: { userId }, include: [{ model: SalesProducts }], 
+    });
+    return saleAndProduct;
+  } catch (error) {
+    throw new CustomErrors(500, error.message);
+  }
+};
+
+const findSaleAndRelatedProductsBySellerId = async (sellerId) => {
+  try {
+    const saleAndProduct = await Sale.findAll({ 
+      where: { sellerId }, include: [{ model: SalesProducts }], 
     });
     return saleAndProduct;
   } catch (error) {
@@ -82,7 +93,8 @@ const deleteOneSale = async (id) => {
 module.exports = {
   create, 
   readOne,
-  findSaleAndRelatedProducts, 
+  findSaleAndRelatedProductsByUserId,
+  findSaleAndRelatedProductsBySellerId, 
   readAllByUserId, 
   updateSaleStatus, 
   deleteOneSale,
