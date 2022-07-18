@@ -2,10 +2,9 @@ const express = require('express');
 
 const router = express.Router();
 
-const ControllerSeller = (_req, res) => res.status(418).end();
+const ControllerSeller = require('../controllers/ControllerSeller');
+const { verifyToken } = require('../middlewares');
 
-router.get('/', ControllerSeller);
-
-// router.get('/', ControllerSeller.getAllSellers);
+router.get('/list', verifyToken, ControllerSeller.findAllSellers);
 
 module.exports = router;
