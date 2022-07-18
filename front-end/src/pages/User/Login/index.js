@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
-import logo from '../../images/logo.png';
-import EmailPasswordValidation from '../../util/EmailPasswordValidation';
-import Button from '../../components/Button';
-import TextInput from '../../components/TextInput';
-import { postRequest } from '../../services/api';
+import logo from '../../../images/logo.png';
+import EmailPasswordValidation from '../../../util/EmailPasswordValidation';
+import Button from '../../../components/Button';
+import TextInput from '../../../components/TextInput';
+import { postRequest } from '../../../services/api';
 import './style.css';
 
 const Login = () => {
