@@ -20,7 +20,8 @@ const findUser = async (email) => {
 
 const findAllSellers = async () => {
   try {
-    const seller = await User.findAll({ where: { role: 'seller' } });
+    const seller = await User.findAll({
+       where: { role: 'seller' }, attributes: { exclude: ['password'] } });
     return seller;
   } catch (error) {
     throw new Error('Something went wrong with seller list');
