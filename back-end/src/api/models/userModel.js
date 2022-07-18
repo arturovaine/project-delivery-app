@@ -14,7 +14,7 @@ const findUser = async (email) => {
     const userExists = await User.findOne({ where: { email } });
     return userExists;
   } catch (err) {
-    throw new Error('Erro para encontrar usuário cadastrado.');
+    throw new Error('Error to find registered user');
   }
 };
 
