@@ -5,7 +5,7 @@ const createUser = async (name, email, password) => {
     const newUser = await User.create({ name, email, password, role: 'customer' });
     return newUser;
   } catch (err) {
-    throw new Error('Erro na model de criação de usuário.');
+    throw new Error('Error in user creation');
   }
 };
 
@@ -14,8 +14,18 @@ const findUser = async (email) => {
     const userExists = await User.findOne({ where: { email } });
     return userExists;
   } catch (err) {
-    throw new Error('Erro para encontrar usuário cadastrado.');
+    throw new Error('Error to find registered user');
   }
 };
 
-module.exports = { createUser, findUser };
+const findAllSellers = async () => {
+  try {
+    const seller = await User.findAll({
+       where: { role: 'seller' }, attributes: { exclude: ['password'] } });
+    return seller;
+  } catch (error) {
+    throw new Error('Something went wrong with seller list');
+  }
+};
+
+module.exports = { createUser, findUser, findAllSellers };
