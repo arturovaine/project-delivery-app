@@ -34,8 +34,31 @@ const readAllByUserId = async (userId) => {
   }
 };
 
-const updateOne = async () => {};
+const readAllBySellerId = async (sellerId) => {
+  try {
+    const allSellerSales = await Sale.findAll({ where: { sellerId } });
+    return allSellerSales;
+  } catch (error) {
+    throw new CustomErrors(500, error.message);
+  }
+};
+
+const updateSaleStatus = async (saleId, status) => {
+  try {
+    const updateSale = await Sale.update({ status }, { where: { id: saleId } });
+    return updateSale;
+  } catch (error) {
+    throw new CustomErrors(500, error.message);
+  }
+};
 
 const deleteSale = async () => {};
 
-module.exports = { create, readOne, readAllByUserId, updateOne, deleteSale };
+module.exports = {
+  create, 
+  readOne, 
+  readAllByUserId, 
+  updateSaleStatus, 
+  deleteSale,
+  readAllBySellerId,
+ };
