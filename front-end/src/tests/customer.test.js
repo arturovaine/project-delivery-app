@@ -1,7 +1,10 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 // import userEvent from '@testing-library/user-event';
-// import Customer from '../pages/Customer';
+// import Checkout from '../pages/Customer/Checkout';
+// import Orders from '../pages/Customer/Orders';
+// import OrdersDetails from '../pages/Customer/OrdersDetails';
+import Products from '../pages/Customer/Products';
 
 describe('Verifica se os elementos da tela de cliente estão com os data-testids corretos', () => {
   beforeEach(() => {
@@ -12,8 +15,8 @@ describe('Verifica se os elementos da tela de cliente estão com os data-testids
   // });
   // afterEach(cleanup);
 
-  test('Verifica data-testid ...', () => {
-    // render(<Customer />);
+  test('Verifica se existe data-testid de produtos', () => {
+    // render(<Products />);
     const elLinkProducts = screen.getAllByTestId('customer_products__element-navbar-link-products');
     expect(elLinkProducts).toBeInTheDocument();
   });

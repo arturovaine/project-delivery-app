@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 // import userEvent from '@testing-library/user-event';
-import Login from '../pages/Login';
+import Login from '../pages/User/Login';
 
 describe('Verifica se os elementos da tela de login estão com os data-testids corretos', () => {
   test('Verifica se existe data-testid para elemento de input de e-mail de login (email).', () => {
