@@ -1,8 +1,8 @@
 const { User } = require('../../database/models');
 
-const createUser = async (name, email, password) => {
+const createUser = async (name, email, password, role='customer') => {
   try {
-    const newUser = await User.create({ name, email, password, role: 'customer' });
+    const newUser = await User.create({ name, email, password, role });
     return newUser;
   } catch (err) {
     throw new Error('Error in user creation');
@@ -12,6 +12,15 @@ const createUser = async (name, email, password) => {
 const findUser = async (email) => {
   try {
     const userExists = await User.findOne({ where: { email } });
+    return userExists;
+  } catch (err) {
+    throw new Error('Error to find registered user');
+  }
+};
+
+const removeUser = async (email) => {
+  try {
+    const userExists = await User.destroy({ where: { email } });
     return userExists;
   } catch (err) {
     throw new Error('Error to find registered user');
@@ -28,4 +37,9 @@ const findAllSellers = async () => {
   }
 };
 
-module.exports = { createUser, findUser, findAllSellers };
+module.exports = {
+  createUser,
+  removeUser,
+  findUser,
+  findAllSellers,
+};
