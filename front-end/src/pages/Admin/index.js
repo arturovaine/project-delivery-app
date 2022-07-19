@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import EmailPasswordValidation from '../../util/EmailPasswordValidation';
-import { postRequest } from '../../services/api';
+import { postRequest, getRequest } from '../../services/api';
 
 const Admin = () => {
   const [name, setName] = useState('');
@@ -12,6 +12,8 @@ const Admin = () => {
   const [isSubmitButtonDisabled, setDisabled] = useState(true);
   const [failedRegister, setFailedRegister] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [users, setUsers] = useState('');
+  console.log('teste');
 
   const register = async (event) => {
     event.preventDefault();
@@ -31,7 +33,23 @@ const Admin = () => {
     }
   };
 
+  // const usersData = async () => {
+  //   try {
+  //     const endpoint = '/users';
+  //     const allUsers = await getRequest(endpoint);
+  //     return allUsers;
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   useEffect(() => {
+    
+    const endpoint = '/users';
+    const allUsers = async () => await getRequest(endpoint);
+    setUsers(allUsers);
+
+
     const TWELVE = 12;
     const validation = EmailPasswordValidation(email, password);
     const namevalidation = name.length >= TWELVE;
@@ -112,7 +130,6 @@ const Admin = () => {
             return (
               <tr key={ user.id }>
                 <td>{ user.id }</td>
-                <td>{ user.name }</td>
                 <td>{ user.name }</td>
                 <td>{ user.email }</td>
                 <td>{ user.role }</td>
