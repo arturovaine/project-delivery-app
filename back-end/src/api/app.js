@@ -21,6 +21,7 @@ app.use('/sellers', sellerRoutes);
 app.use('/products', productRoutes);
 app.use('/sales', salesRoutes);
 app.use('/orders', ordersRoutes);
+app.use('/admin/manage', adminRoutes);
 
 app.get('/coffee', (_req, res) => res.status(418).end());
 
