@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import Admin from './pages/Admin';
 import Login from './pages/User/Login';
 import Register from './pages/User/Register';
 import ProductsCustomer from './pages/Customer/Products';
@@ -18,6 +19,7 @@ export default class Routes extends Component {
             </Route>
             <Route exact path="/login" component={ Login } />
             <Route exact path="/register" component={ Register } />
+            <Route exact path="/admin/manage" component={ Admin } />
             <Route exact path="/customer/products" component={ ProductsCustomer } />
             <Route exact path="/customer/checkout" component={ CheckoutCustomer } />
             <Route exact path="/customer/orders" component={ OrdersCustomer } />
