@@ -1,8 +1,8 @@
 const { User } = require('../../database/models');
 
-const createUser = async (name, email, password) => {
+const createUser = async (name, email, password, role='customer') => {
   try {
-    const newUser = await User.create({ name, email, password, role: 'customer' });
+    const newUser = await User.create({ name, email, password, role });
     return newUser;
   } catch (err) {
     throw new Error('Error in user creation');

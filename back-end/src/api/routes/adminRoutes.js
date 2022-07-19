@@ -1,10 +1,10 @@
 const express = require('express');
 const ControllerUsers = require('../controllers/ControllerUsers');
-const { verifyLogin } = require('../middlewares');
+const { verifyRegister } = require('../middlewares');
 
 const router = express.Router();
 
-router.post('/', verifyLogin, ControllerUsers.adminCreateUser);
-router.delete('/', verifyLogin, ControllerUsers.adminDeleteUser);
+router.post('/', verifyRegister, ControllerUsers.adminCreateUser);
+router.delete('/', ControllerUsers.adminDeleteUser);
 
 module.exports = router;
