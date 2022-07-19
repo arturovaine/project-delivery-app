@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, screen, cleanup } from '@testing-library/react';
 // import userEvent from '@testing-library/user-event';
-// import Admin from '../pages/Admin';
+import Admin from '../pages/Admin';
 
 describe('Verifica se os elementos da tela de admin estão com os data-testids corretos', () => {
   beforeEach(() => {
-    // render(<Admin />);
+    render(<Admin />);
   });
 
   // afterEach(() => {
@@ -14,27 +14,27 @@ describe('Verifica se os elementos da tela de admin estão com os data-testids c
 
   test('Verifica data-testid do input name.', () => {
     // render(<Admin />);
-    const inputName = screen.getAllByTestId('admin_manage__input-name');
+    const inputName = screen.getByTestId('admin_manage__input-name');
     expect(inputName).toBeInTheDocument();
   });
   
   test('Verifica data-testid do input email.', () => {
-    const inputEmail = screen.getAllByTestId('admin_manage__input-email');
+    const inputEmail = screen.getByTestId('admin_manage__input-email');
     expect(inputEmail).toBeInTheDocument();
   });
   
   test('Verifica data-testid do input password.', () => {
-    const inputPassword = screen.getAllByTestId('admin_manage__input-password');
+    const inputPassword = screen.getByTestId('admin_manage__input-password');
     expect(inputPassword).toBeInTheDocument();
   });
   
   test('Verifica data-testid do select role.', () => {
-    const selectRole = screen.getAllByTestId('admin_manage__select-role');
+    const selectRole = screen.getByTestId('admin_manage__select-role');
     expect(selectRole).toBeInTheDocument();
   });
   
   test('Verifica data-testid do botão de cadastro, register.', () => {
-    const btnRegister = screen.getAllByTestId('admin_manage__button-register');
+    const btnRegister = screen.getByTestId('admin_manage__button-register');
     expect(btnRegister).toBeInTheDocument();
   });
   
