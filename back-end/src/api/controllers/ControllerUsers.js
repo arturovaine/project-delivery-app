@@ -27,6 +27,19 @@ const adminCreateUser = async (req, res) => {
   }
 };
 
+const adminDeleteUser = async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
+    const user = await ServiceUsers.remove(name, email, password);
+    return res.status(201).json(user);
+  } catch (err) {
+    if (err instanceof CustomError) {
+      return res.status(err.statusCode).send({ error: err.message });
+    }
+    return res.status(500).send({ error: err.message });
+  }
+};
+
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -43,5 +56,6 @@ const login = async (req, res) => {
 module.exports = {
   createUser,
   adminCreateUser,
+  adminDeleteUser,
   login,
 };
