@@ -1,5 +1,5 @@
 const md5 = require('md5');
-const { createUser, findUser } = require('../models/userModel');
+const { createUser, removeUser, findUser } = require('../models/userModel');
 const CustomErrors = require('../errors/customErrors');
 const { jwtSign } = require('../jwt');
 
@@ -13,6 +13,16 @@ const create = async (name, email, password) => {
     return { name, email, role, token };
   }
   throw new CustomErrors(409, 'User already exists');
+};
+
+const remove = async (name, email, password) => {
+  const userExists = await findUser(email);
+  if (!userExists) {
+    const hashPassword = md5(password);
+    await removeUser(name, email, hashPassword);
+    return { name, email };
+  }
+  throw new CustomErrors(409, 'User does not exist');
 };
 
 const login = async (email, password) => {
@@ -29,4 +39,4 @@ const login = async (email, password) => {
   throw new CustomErrors(404, 'User does not exist');
 };
 
-module.exports = { create, login };
+module.exports = { create, remove, login };

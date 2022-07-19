@@ -18,6 +18,15 @@ const findUser = async (email) => {
   }
 };
 
+const removeUser = async (email) => {
+  try {
+    const userExists = await User.destroy({ where: { email } });
+    return userExists;
+  } catch (err) {
+    throw new Error('Error to find registered user');
+  }
+};
+
 const findAllSellers = async () => {
   try {
     const seller = await User.findAll({
@@ -28,4 +37,9 @@ const findAllSellers = async () => {
   }
 };
 
-module.exports = { createUser, findUser, findAllSellers };
+module.exports = {
+  createUser,
+  removeUser,
+  findUser,
+  findAllSellers
+};
