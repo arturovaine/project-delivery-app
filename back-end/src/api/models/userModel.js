@@ -41,5 +41,5 @@ module.exports = {
   createUser,
   removeUser,
   findUser,
-  findAllSellers
+  findAllSellers,
 };
