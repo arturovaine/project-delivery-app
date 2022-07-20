@@ -23,10 +23,10 @@ const checkDeliveryAddress = (deliveryAddress = '') => {
   return true;
 };
 
-const checkDeliveryNumber = (deliveryNumber) => {
-  if (!deliveryNumber) throw new CustomErrors(400, 'deliveryNumber must be informed');
-  if (typeof deliveryNumber !== 'number') {
-    throw new CustomErrors(400, 'deliveryNumber must be a number');
+const checkDeliveryNumber = (deliveryNumber = '') => {
+  if (deliveryNumber.length < 1) throw new CustomErrors(400, 'deliveryNumber must be informed');
+  if (typeof deliveryNumber !== 'string') {
+    throw new CustomErrors(400, 'deliveryNumber must be a string with numbers');
   }
   return true;
 };
