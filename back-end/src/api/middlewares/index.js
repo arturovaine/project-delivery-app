@@ -48,7 +48,6 @@ const verifyRegister = (req, res, next) => {
       if (error instanceof CustomErrors) {
         return res.status(error.statusCode).send({ error: error.message });
       }
-      console.log(error);
       return res.status(500).end();
   }
 };
