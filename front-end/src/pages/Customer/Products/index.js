@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Navbar from '../../../components/NavBar';
 import { getRequest } from '../../../services/api';
 import Load from '../../../components/Load';
@@ -8,6 +8,9 @@ import Counter from '../../../components/Counter';
 const ProductsPage = () => {
   const [productsList, setProductsList] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const history = useHistory();
 
   useEffect(() => {
     const api = async () => {
@@ -18,8 +21,17 @@ const ProductsPage = () => {
     api();
   }, []);
 
+  const addPriceTotal = (price) => {
+    const total = totalPrice + Number(price);
+    setTotalPrice(Math.round(total * 100) / 100);
+  };
+
+  const rmPriceTotal = (price) => {
+    const total = totalPrice - Number(price);
+    setTotalPrice(Math.round(total * 100) / 100);
+  };
+
   const listProducts = () => {
-    console.log(productsList);
     if (productsList.length === 0) {
       return (<p>nenhum produto encontrado</p>);
     } return (
@@ -35,10 +47,22 @@ const ProductsPage = () => {
                 <p>{product.name}</p>
                 <p>{product.price}</p>
               </Link>
-              <Counter testId={ product.id } />
+              <Counter
+                testId={ product.id }
+                addPrice={ () => addPriceTotal(product.price) }
+                rmPrice={ () => rmPriceTotal(product.price) }
+              />
             </div>
           ))
         }
+        <button
+          type="button"
+          data-testid="customer_products__checkout-bottom-value"
+          onClick={ () => history.push('/customer/checkout') }
+        >
+          Ver carrinho: R$
+          <span>{ totalPrice }</span>
+        </button>
       </div>
     );
   };
