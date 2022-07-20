@@ -33,15 +33,17 @@ const Admin = () => {
     }
   };
 
-  // const usersData = async () => {
-  //   try {
-  //     const endpoint = '/users';
-  //     const allUsers = await getRequest(endpoint);
-  //     return allUsers;
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const usersData = async () => {
+    try {
+      const endpoint = '/users';
+      // const allUsers = await getRequest(endpoint);
+      const data = await fetch(endpoint);
+      const { results } = await data.json();
+      return results;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     
@@ -118,33 +120,37 @@ const Admin = () => {
         </form>
       </section>
       <section>
-        {/* <table>
+        <table>
           <tr>
-            <th>Item</th>
-            <th>Nome</th>
-            <th>E-mail</th>
-            <th>Tipo</th>
-            <th>Excluir</th>
+            <thead>
+              <th>Item</th>
+              <th>Nome</th>
+              <th>E-mail</th>
+              <th>Tipo</th>
+              <th>Excluir</th>
+            </thead>
           </tr>
-          { users.map((user) => {
-            return (
-              <tr key={ user.id }>
-                <td>{ user.id }</td>
-                <td>{ user.name }</td>
-                <td>{ user.email }</td>
-                <td>{ user.role }</td>
-                <td>
-                  <Button
-                    label="Excluir"
-                    buttonType="primary-button"
-                    testId="admin_manage__button-register"
-                    // onClick={ removeUser(user.email) }
-                  />
-                </td>
-              </tr>
-            );
-          })}
-        </table> */}
+          <tbody>
+            { users.map((user) => {
+              return (
+                <tr key={ user.id }>
+                  <td>{ user.id }</td>
+                  <td>{ user.name }</td>
+                  <td>{ user.email }</td>
+                  <td>{ user.role }</td>
+                  <td>
+                    <Button
+                      label="Excluir"
+                      buttonType="primary-button"
+                      testId="admin_manage__button-register"
+                      // onClick={ removeUser(user.email) }
+                    />
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </section>
     </main>
   );
