@@ -22,6 +22,19 @@ const createSaleWithProducts = async (saleData) => {
   }
 };
 
+const findSaleAndProductsByUserId = async (userId) => {
+  try {
+    const saleAndProducts = await salesModel.findSaleAndRelatedProductsByUserId(userId);
+    return saleAndProducts;
+  } catch (error) {
+    if (error instanceof CustomErrors) {
+      throw new CustomErrors(error.statusCode, error.message);
+    }
+    throw new CustomErrors(500, 'Service unavailable');
+  }
+};
+
 module.exports = {
   createSaleWithProducts,
+  findSaleAndProductsByUserId,
 };
