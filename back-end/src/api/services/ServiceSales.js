@@ -3,6 +3,7 @@ const salesProductsModel = require('../models/salesProductsModel');
 const userModel = require('../models/userModel');
 const CustomErrors = require('../errors/customErrors');
 
+// needs a valid email, otherwise destructuring won't work
 const createSaleWithProducts = async (saleData) => {
   try {
     const { customerEmail, sellerId, totalPrice, deliveryAddress, 
