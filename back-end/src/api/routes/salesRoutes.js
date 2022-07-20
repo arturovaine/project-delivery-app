@@ -2,9 +2,9 @@ const express = require('express');
 
 const router = express.Router();
 
-const ControllerSales = (_req, res) => res.status(418).end();
+const ControllerSales = require('../controllers/ControllerSales');
 
-router.post('/', ControllerSales);
+router.post('/', ControllerSales.createSaleWithProducts);
 
 // router.post('/', ControllerSales.addSale);
 
