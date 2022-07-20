@@ -12,7 +12,6 @@ const createUser = async (name, email, password, role = 'customer') => {
 const findUser = async (email) => {
   try {
     const userExists = await User.findOne({ where: { email } });
-    if (!userExists) throw new Error('User not found');
     return userExists;
   } catch (err) {
     throw new Error(err.message);
