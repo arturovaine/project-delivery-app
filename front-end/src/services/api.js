@@ -23,4 +23,10 @@ export const getRequest = async (endpoint) => {
   return data;
 };
 
+export const destroy = async (endpoint, body) => {
+  const { data } = await api.delete(endpoint, body);
+
+  return data;
+};
+
 export default api;

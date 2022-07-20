@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import EmailPasswordValidation from '../../util/EmailPasswordValidation';
-import { postRequest, getRequest } from '../../services/api';
+import { postRequest } from '../../services/api';
 
 const Admin = () => {
   const [name, setName] = useState('');
@@ -13,19 +13,14 @@ const Admin = () => {
   const [failedRegister, setFailedRegister] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [users, setUsers] = useState('');
-  console.log('teste');
 
   const register = async (event) => {
     event.preventDefault();
 
     try {
       const endpoint = '/register';
-
-      const { token, user } = await postRequest(endpoint, { name, email, password });
-      console.log(user);
-      console.log(token);
-      // localStorage.setItem('user', JSON.stringify({ ...user, token }));
-      // setLoggedIn(true);
+      const newUser = await postRequest(endpoint, { name, email, password });
+      return newUser;
     } catch (error) {
       setFailedRegister(true);
       setLoggedIn(false);
@@ -33,32 +28,51 @@ const Admin = () => {
     }
   };
 
-  const usersData = async () => {
+  const removeUser = async (user) => {
+    // event.preventDefault();
     try {
       const endpoint = '/users';
-      // const allUsers = await getRequest(endpoint);
-      const data = await fetch(endpoint);
-      const { results } = await data.json();
-      return results;
+      await destroy(endpoint, user);
+      return ('This user is about to be removed:', user);
     } catch (error) {
       console.log(error);
     }
   };
 
+  // const usersData = async () => {
+  //   try {
+  //     const endpoint = 'http://localhost:3000/users';
+  //     // const allUsers = await getRequest(endpoint);
+  //     const data = await fetch(endpoint);
+  //     const { results } = await data.json();
+  //     setUsers(results);
+  //     // return results;
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   useEffect(() => {
-    
-    const endpoint = '/users';
-    const allUsers = async () => await getRequest(endpoint);
-    setUsers(allUsers);
+  // usersData();
+    console.log('teste:', users);
+    fetch('/users').then(
+      (res) => setUsers(res.data),
+    );
+    console.log('teste');
+    return () => {
+      // cleaning up the listeners here
+      console.log('teste');
+    };
+  }, []);
 
-
+  useEffect(() => {
     const TWELVE = 12;
     const validation = EmailPasswordValidation(email, password);
     const namevalidation = name.length >= TWELVE;
 
     if (validation === true && namevalidation === true) setDisabled(false);
     else setDisabled(true);
-  }, [name, email, password]);
+  }, [name, email, password, users]);
 
   if (loggedIn) return <Redirect to="/admin/manage" />;
 
@@ -121,17 +135,15 @@ const Admin = () => {
       </section>
       <section>
         <table>
-          <tr>
-            <thead>
-              <th>Item</th>
-              <th>Nome</th>
-              <th>E-mail</th>
-              <th>Tipo</th>
-              <th>Excluir</th>
-            </thead>
-          </tr>
+          <thead>
+            <tr>Item</tr>
+            <tr>Nome</tr>
+            <tr>E-mail</tr>
+            <tr>Tipo</tr>
+            <tr>Excluir</tr>
+          </thead>
           <tbody>
-            { users.map((user) => {
+            {/* { users.map((user) => {
               return (
                 <tr key={ user.id }>
                   <td>{ user.id }</td>
@@ -142,13 +154,13 @@ const Admin = () => {
                     <Button
                       label="Excluir"
                       buttonType="primary-button"
-                      testId="admin_manage__button-register"
+                      testId="admin_manage__element-user-table-remove-"
                       // onClick={ removeUser(user.email) }
                     />
                   </td>
                 </tr>
               );
-            })}
+            })} */}
           </tbody>
         </table>
       </section>
