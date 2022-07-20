@@ -3,8 +3,8 @@ const CustomErrors = require('../errors/customErrors');
 
 const createSaleWithProducts = async (req, res) => {
   try {
-   await salesService.createSaleWithProducts({ ...req.body });
-   return res.status(201).json();
+   const saleId = await salesService.createSaleWithProducts({ ...req.body });
+   return res.status(201).json(saleId);
   } catch (error) {
     if (error instanceof CustomErrors) {
       return res.status(error.statusCode).send({ error: error.message });
