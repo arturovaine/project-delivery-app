@@ -1,6 +1,6 @@
 const { User } = require('../../database/models');
 
-const createUser = async (name, email, password, role='customer') => {
+const createUser = async (name, email, password, role = 'customer') => {
   try {
     const newUser = await User.create({ name, email, password, role });
     return newUser;
@@ -14,7 +14,7 @@ const findUser = async (email) => {
     const userExists = await User.findOne({ where: { email } });
     return userExists;
   } catch (err) {
-    throw new Error('Error to find registered user');
+    throw new Error(err.message);
   }
 };
 

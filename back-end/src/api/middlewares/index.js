@@ -9,6 +9,15 @@ const {
   validRegisterKeys,
  } = require('./routesFunctions');
 
+ const {
+  checkSellerId,
+  checkTotalPrice,
+  checkDeliveryAddress,
+  checkDeliveryNumber,
+  checkProductsKeys,
+  checkProductsData,
+ } = require('./salesRouteFunctions');
+
 const verifyLogin = (req, res, next) => {
   try {
     validLoginKeys(req);
@@ -39,7 +48,6 @@ const verifyRegister = (req, res, next) => {
       if (error instanceof CustomErrors) {
         return res.status(error.statusCode).send({ error: error.message });
       }
-      console.log(error);
       return res.status(500).end();
   }
 };
@@ -55,4 +63,25 @@ const verifyToken = (req, res, next) => {
   }
 };
 
-module.exports = { verifyLogin, verifyRegister, verifyToken };
+const verifySalesCheckoutData = (req, res, next) => {
+  try {
+    const { 
+      customerEmail, sellerId, totalPrice, deliveryAddress, deliveryNumber, products } = req.body;
+    const validations = [isEmailValid(customerEmail), checkSellerId(sellerId),
+      checkTotalPrice(totalPrice),
+      checkDeliveryAddress(deliveryAddress),
+      checkDeliveryNumber(deliveryNumber),
+      checkProductsKeys(products),
+      checkProductsData(products),
+    ];
+    const isValid = validations.every((e) => e === true);
+    return isValid ? next() : '';
+  } catch (error) {
+    if (error instanceof CustomErrors) {
+      return res.status(error.statusCode).send({ error: error.message });
+    }
+    return res.status(500).end();
+  }
+};
+
+module.exports = { verifyLogin, verifyRegister, verifyToken, verifySalesCheckoutData };
