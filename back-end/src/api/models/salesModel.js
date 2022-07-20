@@ -26,7 +26,9 @@ const create = async (saleData) => {
 const readOne = async (id) => {
   try {
     const sale = await Sale.findOne({ 
-      where: { id }, include: [{ model: SalesProducts }], 
+      where: { id }, 
+      include: [{ model: SalesProducts, attributes: { exclude: ['ProductId', 'SaleId'] } }],
+      attributes: { exclude: ['UserId'] },
     });
     return sale;
   } catch (error) {
