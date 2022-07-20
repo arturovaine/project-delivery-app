@@ -21,8 +21,6 @@ const create = async (saleData) => {
   }
 };
 
-// create({ userId: 7, sellerId: 2, totalPrice: 200.50, deliveryAddress: 'a', deliveryNumber: '30' });
-
 const readOne = async (id) => {
   try {
     const sale = await Sale.findOne({ 

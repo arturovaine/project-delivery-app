@@ -1,6 +1,7 @@
 const salesService = require('../services/ServiceSales');
 const CustomErrors = require('../errors/customErrors');
 
+// /sales/checkout
 const createSaleWithProducts = async (req, res) => {
   try {
    const saleId = await salesService.createSaleWithProducts({ ...req.body });
@@ -13,6 +14,7 @@ const createSaleWithProducts = async (req, res) => {
   }
 };
 
+// customer/orders/:id
 const findSaleAndProducts = async (req, res) => {
   try {
     const { id } = req.params;
