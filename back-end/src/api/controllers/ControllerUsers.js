@@ -14,6 +14,28 @@ const createUser = async (req, res) => {
   }
 };
 
+const getAllUsers = async (_req, res) => {
+  try {
+    const allUsers = await ServiceUsers.getAllUsers();
+    let tabulatedUsers = [];
+    allUsers.map((user)=>{
+      const { id, name, email, role } = user;
+      tabulatedUsers.push({ id, name, email, role });
+    });
+    console.log('tabulated:', tabulatedUsers);
+    // console.log(allUsers[0].dataValues);
+    // console.log(allUsers[1].dataValues);
+    return res.status(200).json(tabulatedUsers);
+  } catch (err) {
+    if (err instanceof CustomError) {
+      return res.status(err.statusCode).send({ error: err.message });
+      return;
+    }
+    return res.status(500).send({ error: err.message });
+    return;
+  }
+};
+
 const adminCreateUser = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
@@ -55,6 +77,7 @@ const login = async (req, res) => {
 
 module.exports = {
   createUser,
+  getAllUsers,
   adminCreateUser,
   adminDeleteUser,
   login,

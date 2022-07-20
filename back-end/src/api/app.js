@@ -8,6 +8,7 @@ const productRoutes = require('./routes/productRoutes');
 const salesRoutes = require('./routes/salesRoutes');
 const ordersRoutes = require('./routes/ordersRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 app.use(cors());
@@ -23,6 +24,7 @@ app.use('/products', productRoutes);
 app.use('/sales', salesRoutes);
 app.use('/orders', ordersRoutes);
 app.use('/admin/manage', adminRoutes);
+app.use('/users', userRoutes);
 
 app.get('/coffee', (_req, res) => res.status(418).end());
 
