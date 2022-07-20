@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import TextInput from '../../components/TextInput';
+import TableHeader from './TableHeader';
 import Button from '../../components/Button';
 import EmailPasswordValidation from '../../util/EmailPasswordValidation';
 import { postRequest } from '../../services/api';
@@ -12,7 +13,7 @@ const Admin = () => {
   const [isSubmitButtonDisabled, setDisabled] = useState(true);
   const [failedRegister, setFailedRegister] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
-  const [users, setUsers] = useState('');
+  // const [users, setUsers] = useState('');
 
   const register = async (event) => {
     event.preventDefault();
@@ -28,16 +29,16 @@ const Admin = () => {
     }
   };
 
-  const removeUser = async (user) => {
-    // event.preventDefault();
-    try {
-      const endpoint = '/users';
-      await destroy(endpoint, user);
-      return ('This user is about to be removed:', user);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const removeUser = async (user) => {
+  //   // event.preventDefault();
+  //   try {
+  //     const endpoint = '/users';
+  //     await destroy(endpoint, user);
+  //     return ('This user is about to be removed:', user);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   // const usersData = async () => {
   //   try {
@@ -52,18 +53,18 @@ const Admin = () => {
   //   }
   // };
 
-  useEffect(() => {
-  // usersData();
-    console.log('teste:', users);
-    fetch('/users').then(
-      (res) => setUsers(res.data),
-    );
-    console.log('teste');
-    return () => {
-      // cleaning up the listeners here
-      console.log('teste');
-    };
-  }, []);
+  // useEffect(() => {
+  // // usersData();
+  //   console.log('teste:', users);
+  //   fetch('/users').then(
+  //     (res) => setUsers(res.data),
+  //   );
+  //   console.log('teste');
+  //   return () => {
+  //     // cleaning up the listeners here
+  //     console.log('teste');
+  //   };
+  // }, []);
 
   useEffect(() => {
     const TWELVE = 12;
@@ -135,13 +136,7 @@ const Admin = () => {
       </section>
       <section>
         <table>
-          <thead>
-            <tr>Item</tr>
-            <tr>Nome</tr>
-            <tr>E-mail</tr>
-            <tr>Tipo</tr>
-            <tr>Excluir</tr>
-          </thead>
+          <TableHeader />
           <tbody>
             {/* { users.map((user) => {
               return (
