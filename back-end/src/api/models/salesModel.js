@@ -25,7 +25,9 @@ const create = async (saleData) => {
 
 const readOne = async (id) => {
   try {
-    const sale = await Sale.findByPk(id);
+    const sale = await Sale.findOne({ 
+      where: { id }, include: [{ model: SalesProducts }], 
+    });
     return sale;
   } catch (error) {
     throw new CustomErrors(500, error.message);
