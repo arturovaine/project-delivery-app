@@ -20,14 +20,11 @@ const RegisterPage = () => {
       const endpoint = '/register';
 
       const { token, user } = await postRequest(endpoint, { name, email, password });
-      console.log(user);
-      console.log(token);
-      // localStorage.setItem('user', JSON.stringify({ ...user, token }));
-      // setLoggedIn(true);
+      localStorage.setItem('user', JSON.stringify({ ...user, token }));
+      setLoggedIn(true);
     } catch (error) {
       setFailedRegister(true);
       setLoggedIn(false);
-      console.log(error);
     }
   };
 
