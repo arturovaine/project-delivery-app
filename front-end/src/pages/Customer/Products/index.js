@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Navbar from '../../../components/NavBar';
 import { getRequest } from '../../../services/api';
 import Load from '../../../components/Load';
-// import Counter from '../../../components/Counter';
+import Counter from '../../../components/Counter';
 
 const ProductsPage = () => {
   const [productsList, setProductsList] = useState([]);
@@ -35,6 +35,7 @@ const ProductsPage = () => {
                 <p>{product.name}</p>
                 <p>{product.price}</p>
               </Link>
+              <Counter testId={ product.id } />
             </div>
           ))
         }

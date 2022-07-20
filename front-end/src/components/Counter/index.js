@@ -8,25 +8,27 @@ const Counter = (props) => {
 
   return (
     <div className="counter-input">
+      <button
+        onClick={ () => (setQuantity(quantity - 1)) }
+        type="button"
+        data-testid={ `customer_products__button-card-rm-item-${testId}` }
+      >
+        -
+      </button>
       <input
         type="number"
         min={ 0 }
         max={ 100 }
-        data-testid={ testId }
+        data-testid={ `customer_products__input-card-quantity-${testId}` }
         value={ quantity }
       />
       <div>
         <button
-          onClick={ setQuantity(quantity + 1) }
+          onClick={ () => (setQuantity(quantity + 1)) }
           type="button"
+          data-testid={ `customer_products__button-card-add-item-${testId}` }
         >
           +
-        </button>
-        <button
-          onClick={ setQuantity(quantity - 1) }
-          type="button"
-        >
-          -
         </button>
       </div>
     </div>
