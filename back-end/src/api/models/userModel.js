@@ -18,6 +18,15 @@ const findUser = async (email) => {
   }
 };
 
+const findAllUsers = async () => {
+  try {
+    const allUsers = await User.findAll();
+    return allUsers;
+  } catch (err) {
+    throw new Error('Error to find registered users');
+  }
+};
+
 const removeUser = async (email) => {
   try {
     const userExists = await User.destroy({ where: { email } });
@@ -41,5 +50,6 @@ module.exports = {
   createUser,
   removeUser,
   findUser,
+  findAllUsers,
   findAllSellers,
 };
