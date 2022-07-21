@@ -22,9 +22,9 @@ const Login = () => {
     try {
       const endpoint = '/login';
 
-      const { token, user } = await postRequest(endpoint, { email, password });
+      const data = await postRequest(endpoint, { email, password });
 
-      localStorage.setItem('user', JSON.stringify({ token, ...user }));
+      localStorage.setItem('user', JSON.stringify({ ...data }));
       setIsLogged(true);
     } catch (error) {
       setFailedTryLogin(true);
