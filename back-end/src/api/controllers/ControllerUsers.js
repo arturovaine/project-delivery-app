@@ -17,7 +17,7 @@ const createUser = async (req, res) => {
 const getAllUsers = async (_req, res) => {
   try {
     const allUsers = await ServiceUsers.getAllUsers();
-    let tabulatedUsers = [];
+    const tabulatedUsers = [];
     allUsers.map((user)=>{
       const { id, name, email, role } = user;
       tabulatedUsers.push({ id, name, email, role });
@@ -29,10 +29,8 @@ const getAllUsers = async (_req, res) => {
   } catch (err) {
     if (err instanceof CustomError) {
       return res.status(err.statusCode).send({ error: err.message });
-      return;
     }
     return res.status(500).send({ error: err.message });
-    return;
   }
 };
 
