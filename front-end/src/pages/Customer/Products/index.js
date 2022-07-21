@@ -14,7 +14,8 @@ const ProductsPage = () => {
 
   useEffect(() => {
     const api = async () => {
-      const apiProducts = await getRequest('/products');
+      const { token } = JSON.parse(localStorage.getItem('user'));
+      const apiProducts = await getRequest('/products', token);
       setProductsList(apiProducts);
       setLoading(true);
     };

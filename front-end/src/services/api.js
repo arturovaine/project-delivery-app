@@ -17,7 +17,8 @@ export const postRequest = async (endpoint, body) => {
   return data;
 };
 
-export const getRequest = async (endpoint) => {
+export const getRequest = async (endpoint, token) => {
+  setToken(token);
   const { data } = await api.get(endpoint);
 
   return data;
