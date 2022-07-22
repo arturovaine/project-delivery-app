@@ -51,9 +51,21 @@ const ProductsPage = () => {
                 to={ `/customer/orders/${product.id}` }
                 data-testid={ `customer_products__element-card-price-${product.id}` }
               >
-                <img src={ product.urlImage } alt={ product.name } />
-                <p>{product.name}</p>
-                <p>{product.price}</p>
+                <img
+                  src={ product.urlImage }
+                  alt={ product.name }
+                  data-testid={ `customer_products__img-card-bg-image-${product.id}` }
+                />
+                <p
+                  data-testid={ `customer_products__element-card-title-${product.id}` }
+                >
+                  {product.name}
+                </p>
+                <p
+                  data-testid={ `customer_products__element-card-price-${product.id}` }
+                >
+                  {product.price}
+                </p>
               </Link>
               <Counter
                 testId={ product.id }

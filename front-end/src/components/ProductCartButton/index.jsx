@@ -21,11 +21,13 @@ const ProductCartButton = (props) => {
   return (
     <button
       type="button"
-      data-testid="customer_products__checkout-bottom-value"
+      data-testid="customer_products__button-cart"
       onClick={ () => history.push('/customer/checkout') }
     >
       Ver carrinho: R$
-      <span>{ totalPrice }</span>
+      <span data-testid="customer_products__checkout-bottom-value">
+        { totalPrice }
+      </span>
     </button>
   );
 };
