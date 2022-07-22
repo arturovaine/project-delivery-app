@@ -1,45 +1,99 @@
-import React from 'react';
+import { useState, useEffect, React } from 'react';
 import TextInput from '../../../components/TextInput';
-import Button from '../../../components/Button';
-// import Navbar from '../../../components/NavBar';
+// import Button from '../../../components/Button';
+import Navbar from '../../../components/NavBar';
 
 const CheckoutPage = () => {
-  const teste = 'teste';
-  console.log(teste);
+  const [productsCheckout, setProducts] = useState([]);
+  const [totalPriceCheckout, setTotalPrice] = useState([]);
+  // const [address, setAddress] = useState('');
+  // const [addressNumber, setAddressNumber] = useState('');
+
+  useEffect(() => {
+    const { products, totalPrice } = JSON.parse(localStorage.getItem('carrinho'));
+    setProducts(products);
+    setTotalPrice(totalPrice);
+    console.log('teste', products);
+  }, []);
 
   return (
     <main>
+      <Navbar />
       <header>Finalizar pedido</header>
-      <thead>
-        <th>Item</th>
-        <th>Descrição</th>
-        <th>Quantidade</th>
-        <th>Valor Unitário</th>
-        <th>Sub-total</th>
-        <th>Remove Item</th>
-      </thead>
-      <tbody>
-        {/* <tr key={ orderProduct.id }>
-                   <td data-testid={ `customer_checkout__element-order-table-item-number-${orderProduct.id}` }>{ orderProduct.id }</td>
-                   <td data-testid={ `customer_checkout__element-order-table-name-${orderProduct.id}` }>{ orderProduct.name }</td>
-                   <td data-testid={ `customer_checkout__element-order-table-quantity-${orderProduct.id}` }>{ orderProduct.quantity }</td>
-                   <td data-testid={ `customer_checkout__element-order-table-unit-price-${orderProduct.id}` }>{ orderProduct.unitPrice }</td>
-                   <td data-testid={ `customer_checkout__element-order-table-sub-total-${orderProduct.id}` }>{ orderProduct.subTotal }</td>
-                   <td>
-                     <Button
-                       label="Excluir"
-                       buttonType="primary-button"
-                       testId="customer_checkout__element-order-table-remove-{orderProduct.id}"
-                       // onClick={ removeProduct(orderProduct.id) }
-                     />
-                   </td>
-                 </tr> */}
-      </tbody>
-      <Button
-        testId="customer_checkout__element-order-total-price"
-      />
+      <table>
+        <thead>
+          <th>Item</th>
+          <th>Descrição</th>
+          <th>Quantidade</th>
+          <th>Valor Unitário</th>
+          <th>Sub-total</th>
+          <th>Remove Item</th>
+        </thead>
+        <tbody>
+          { productsCheckout.map((product) => (
+            <tr key={ product.id }>
+              <td
+                data-testid={
+                  `customer_checkout__element-order-table-item-number-${product.id}`
+                }
+              >
+                { product.id }
+              </td>
+              <td
+                data-testid={
+                  `customer_checkout__element-order-table-name-${product.id}`
+                }
+              >
+                { product.name }
+
+              </td>
+              <td
+                data-testid={
+                  `customer_checkout__element-order-table-quantity-${product.id}`
+                }
+              >
+                { product.quantity }
+              </td>
+              <td
+                data-testid={
+                  `customer_checkout__element-order-table-unit-price-${product.price}`
+                }
+              >
+                { product.price }
+              </td>
+              <td
+                data-testid={
+                  `customer_checkout__element-order-table-sub-total-${product.id}`
+                }
+              >
+                { product.quantity * product.price }
+              </td>
+              <td
+                data-testid={
+                  `customer_checkout__element-order-table-remove-${product.id}`
+                }
+              >
+                <button
+                  type="button"
+                  // onClick={}
+                >
+                  Remover
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <button
+        htmlFor=""
+        type="button"
+        data-testid="customer_checkout__element-order-total-price"
+      >
+        Total: R$
+        {totalPriceCheckout}
+      </button>
       <header>Detalhes e Endereço para Entrega</header>
-      <label htmlFor={ teste }>
+      <label htmlFor="customer_checkout__select-seller">
         P.Vendedora Responsável
         <select
           testId="customer_checkout__select-seller"
@@ -63,9 +117,12 @@ const CheckoutPage = () => {
         placeholder="198"
         // value={ addressNumber }
       />
-      <Button
+      <button
+        type="button"
         testId="customer_checkout__button-submit-order"
-      />
+      >
+        FINALIZAR PEDIDO
+      </button>
     </main>
   );
 };
