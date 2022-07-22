@@ -3,35 +3,38 @@ import { Link } from 'react-router-dom';
 import TextInput from '../../../components/TextInput';
 // import Button from '../../../components/Button';
 import Navbar from '../../../components/NavBar';
+import SellerList from '../../../components/SellerList';
+import CheckoutTotal from '../../../components/CheckoutTotal';
 
 const CheckoutPage = () => {
   const [productsCheckout, setProducts] = useState([]);
-  const [totalPriceCheckout, setTotalPrice] = useState(0);
+
   // const [address, setAddress] = useState('');
   // const [addressNumber, setAddressNumber] = useState('');
 
+  const updateLocalStorageProducts = (product) => {
+    const prevData = JSON.parse(localStorage.getItem('carrinho'));
+    prevData.products = product;
+    localStorage.setItem('carrinho', JSON.stringify(prevData));
+  };
+
+  const removeProduct = ({ target }) => {
+    const product = [...productsCheckout];
+    const newData = product.filter((e) => e.id !== parseInt(target.id, 10));
+    // console.log(newData);
+    setProducts(newData);
+    updateLocalStorageProducts(newData);
+  };
+
   useEffect(() => {
-    const { products, totalPrice } = JSON.parse(localStorage.getItem('carrinho'));
-    setProducts(products);
-    setTotalPrice(totalPrice);
-    // console.log('teste', products);
-
-    const calculateTotalPrice = () => {
-      let total = 0;
-      products.forEach((e) => {
-        const { quantity, price } = e;
-        total += quantity * parseFloat(price);
-      });
-      setTotalPrice(total.toFixed(2));
+    const fillProducts = () => {
+      const { products } = JSON.parse(localStorage.getItem('carrinho'));
+      setProducts(products);
     };
-    calculateTotalPrice();
-  }, [productsCheckout]);
 
-  // const removeProduct = (product) => {
-
-  //   products;
-  //   localstorage.removeItem(event.target);
-  // };
+    // console.log('update');
+    fillProducts();
+  }, []);
 
   return (
     <main>
@@ -82,7 +85,7 @@ const CheckoutPage = () => {
                   `customer_checkout__element-order-table-sub-total-${product.id}`
                 }
               >
-                { product.quantity * product.price }
+                { (product.quantity * product.price).toFixed(2) }
               </td>
               <td
                 data-testid={
@@ -91,7 +94,8 @@ const CheckoutPage = () => {
               >
                 <button
                   type="button"
-                  // onClick={ removeProduct(product.id) }
+                  onClick={ removeProduct }
+                  id={ product.id }
                 >
                   Remover
                 </button>
@@ -100,26 +104,14 @@ const CheckoutPage = () => {
           ))}
         </tbody>
       </table>
-      <button
-        htmlFor=""
-        type="button"
-        data-testid="customer_checkout__element-order-total-price"
-      >
-        Total: R$
-        {totalPriceCheckout}
-      </button>
+      <CheckoutTotal
+        products={ productsCheckout }
+      />
       <header>Detalhes e Endereço para Entrega</header>
-      <label htmlFor="customer_checkout__select-seller">
-        P.Vendedora Responsável
-        <select
-          testId="customer_checkout__select-seller"
-        >
-          {/* { options } */}
-        </select>
-      </label>
+      <SellerList />
       <TextInput
         label="Endereço"
-        testId="customer_checkout__input-address"
+        data-testid="customer_checkout__input-address"
         // onChange={ ({ target: { value } }) => setAddress(value) }
         password
         placeholder="Travessa Terceira da Castanheira, Bairro Muruci"
@@ -127,7 +119,7 @@ const CheckoutPage = () => {
       />
       <TextInput
         label="Número"
-        testId="customer_checkout__input-addressNumber"
+        data-testid="customer_checkout__input-addressNumber"
         // onChange={ ({ target: { value } }) => setAddressNumber(value) }
         password
         placeholder="198"
@@ -138,7 +130,7 @@ const CheckoutPage = () => {
       >
         <button
           type="button"
-          testId="customer_checkout__button-submit-order"
+          data-testid="customer_checkout__button-submit-order"
         >
           FINALIZAR PEDIDO
         </button>
