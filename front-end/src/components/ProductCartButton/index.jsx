@@ -16,7 +16,7 @@ const ProductCartButton = (props) => {
       setTotalPrice(total.toFixed(2));
     };
     calculateTotalPrice();
-  }, [products]);
+  }, [products, setTotalPrice]);
 
   return (
     <button
