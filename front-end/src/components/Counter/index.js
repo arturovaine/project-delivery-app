@@ -2,18 +2,22 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const Counter = (props) => {
-  const { testId, addPrice, rmPrice } = props;
+  const { testId } = props;
 
   const [quantity, setQuantity] = useState(0);
 
   const onClickRm = () => {
-    setQuantity(quantity - 1);
-    rmPrice();
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
+    }
   };
 
   const onClickAdd = () => {
     setQuantity(quantity + 1);
-    addPrice();
+  };
+
+  const onChangeHandler = ({ target }) => {
+    setQuantity(target.value);
   };
 
   return (
@@ -31,6 +35,7 @@ const Counter = (props) => {
         max={ 100 }
         data-testid={ `customer_products__input-card-quantity-${testId}` }
         value={ quantity }
+        onChange={ onChangeHandler }
       />
       <div>
         <button
@@ -47,8 +52,6 @@ const Counter = (props) => {
 
 Counter.propTypes = {
   testId: PropTypes.string.isRequired,
-  addPrice: PropTypes.string.isRequired,
-  rmPrice: PropTypes.string.isRequired,
 };
 
 export default Counter;
