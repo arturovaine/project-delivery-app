@@ -1,12 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const ProductCartButton = (props) => {
   const { totalPrice, setTotalPrice, products } = props;
+  const [isDisabled, setIsDisabled] = useState(true);
   const history = useHistory();
 
   useEffect(() => {
+    const enableButton = () => {
+      if (products.length > 0) setIsDisabled(false);
+    };
     const calculateTotalPrice = () => {
       let total = 0;
       products.forEach((e) => {
@@ -16,6 +20,7 @@ const ProductCartButton = (props) => {
       setTotalPrice(total.toFixed(2));
     };
     calculateTotalPrice();
+    enableButton();
   }, [products, setTotalPrice]);
 
   return (
@@ -23,10 +28,11 @@ const ProductCartButton = (props) => {
       type="button"
       data-testid="customer_products__button-cart"
       onClick={ () => history.push('/customer/checkout') }
+      disabled={ isDisabled }
     >
       Ver carrinho: R$
       <span data-testid="customer_products__checkout-bottom-value">
-        { totalPrice }
+        { totalPrice.toString().replace('.', ',') }
       </span>
     </button>
   );
