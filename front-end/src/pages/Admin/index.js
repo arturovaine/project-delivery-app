@@ -13,7 +13,7 @@ const Admin = () => {
   const [isSubmitButtonDisabled, setDisabled] = useState(true);
   const [failedRegister, setFailedRegister] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
-  // const [users, setUsers] = useState('');
+  const [users, setUsers] = useState('');
 
   const register = async (event) => {
     event.preventDefault();
@@ -53,18 +53,18 @@ const Admin = () => {
   //   }
   // };
 
-  // useEffect(() => {
-  // // usersData();
-  //   console.log('teste:', users);
-  //   fetch('/users').then(
-  //     (res) => setUsers(res.data),
-  //   );
-  //   console.log('teste');
-  //   return () => {
-  //     // cleaning up the listeners here
-  //     console.log('teste');
-  //   };
-  // }, []);
+  useEffect(() => {
+  // usersData();
+    console.log('teste:', users);
+    // fetch('/users').then(
+    //   (res) => setUsers(res.data),
+    // );
+    // console.log('teste');
+    // return () => {
+    //   // cleaning up the listeners here
+    //   console.log('teste');
+    // };
+  }, []);
 
   useEffect(() => {
     const TWELVE = 12;
@@ -73,7 +73,7 @@ const Admin = () => {
 
     if (validation === true && namevalidation === true) setDisabled(false);
     else setDisabled(true);
-  }, [name, email, password, users]);
+  }, [name, email, password]);
 
   if (loggedIn) return <Redirect to="/admin/manage" />;
 

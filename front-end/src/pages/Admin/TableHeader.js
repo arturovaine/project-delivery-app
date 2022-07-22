@@ -2,11 +2,11 @@ import React from 'react';
 
 const TableHeader = () => (
   <thead>
-    <tr>Item</tr>
-    <tr>Nome</tr>
-    <tr>E-mail</tr>
-    <tr>Tipo</tr>
-    <tr>Excluir</tr>
+    <tr><td>Item</td></tr>
+    <tr><td>Nome</td></tr>
+    <tr><td>E-mail</td></tr>
+    <tr><td>Tipo</td></tr>
+    <tr><td>Excluir</td></tr>
   </thead>
 );
 
