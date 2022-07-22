@@ -7,6 +7,12 @@ const ProductCartButton = (props) => {
   const [isDisabled, setIsDisabled] = useState(true);
   const history = useHistory();
 
+  const sendTotalPriceToStorage = (price) => {
+    const prevData = JSON.parse(localStorage.getItem('carrinho'));
+    prevData.totalPrice = price;
+    localStorage.setItem('carrinho', JSON.stringify(prevData));
+  };
+
   useEffect(() => {
     const enableButton = () => {
       if (products.length > 0) setIsDisabled(false);
@@ -18,6 +24,7 @@ const ProductCartButton = (props) => {
         total += quantity * parseFloat(price);
       });
       setTotalPrice(total.toFixed(2));
+      sendTotalPriceToStorage(total.toFixed(2));
     };
     calculateTotalPrice();
     enableButton();
