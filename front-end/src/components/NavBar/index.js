@@ -7,6 +7,11 @@ const NavBar = () => {
 
   const { name, role } = JSON.parse(localStorage.getItem('user'));
 
+  const onClickLogoutHandler = () => {
+    localStorage.removeItem('user');
+    history.push('/login');
+  };
+
   const Products = (
     <button
       data-testid="customer_products__element-navbar-link-products"
@@ -62,6 +67,7 @@ const NavBar = () => {
       <button
         data-testid="customer_products__element-navbar-link-logout"
         type="button"
+        onClick={ onClickLogoutHandler }
       >
         Sair
       </button>
