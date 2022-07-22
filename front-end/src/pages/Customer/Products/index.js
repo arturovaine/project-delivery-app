@@ -71,6 +71,7 @@ const ProductsPage = () => {
                 products={ products }
                 setProducts={ setProducts }
                 productPrice={ product.price }
+                productName={ product.name }
               />
             </div>
           ))
