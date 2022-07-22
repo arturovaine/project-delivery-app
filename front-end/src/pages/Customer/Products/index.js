@@ -49,7 +49,6 @@ const ProductsPage = () => {
             <div key={ product.id }>
               <Link
                 to={ `/customer/orders/${product.id}` }
-                data-testid={ `customer_products__element-card-price-${product.id}` }
               >
                 <img
                   src={ product.urlImage }
