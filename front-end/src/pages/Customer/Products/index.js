@@ -8,7 +8,7 @@ import Counter from '../../../components/Counter';
 const ProductsPage = () => {
   const [productsList, setProductsList] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [totalPrice, setTotalPrice] = useState(0);
+  // const [totalPrice, setTotalPrice] = useState(0);
 
   const history = useHistory();
 
@@ -21,16 +21,6 @@ const ProductsPage = () => {
     };
     api();
   }, []);
-
-  const addPriceTotal = (price) => {
-    const total = totalPrice + Number(price);
-    setTotalPrice(Math.round(total * 100) / 100);
-  };
-
-  const rmPriceTotal = (price) => {
-    const total = totalPrice - Number(price);
-    setTotalPrice(Math.round(total * 100) / 100);
-  };
 
   const listProducts = () => {
     if (productsList.length === 0) {
@@ -50,8 +40,6 @@ const ProductsPage = () => {
               </Link>
               <Counter
                 testId={ product.id }
-                addPrice={ () => addPriceTotal(product.price) }
-                rmPrice={ () => rmPriceTotal(product.price) }
               />
             </div>
           ))
