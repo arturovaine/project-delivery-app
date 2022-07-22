@@ -6,7 +6,7 @@ import Navbar from '../../../components/NavBar';
 
 const CheckoutPage = () => {
   const [productsCheckout, setProducts] = useState([]);
-  const [totalPriceCheckout, setTotalPrice] = useState([]);
+  const [totalPriceCheckout, setTotalPrice] = useState(0);
   // const [address, setAddress] = useState('');
   // const [addressNumber, setAddressNumber] = useState('');
 
@@ -14,10 +14,21 @@ const CheckoutPage = () => {
     const { products, totalPrice } = JSON.parse(localStorage.getItem('carrinho'));
     setProducts(products);
     setTotalPrice(totalPrice);
-    console.log('teste', products);
-  }, []);
+    // console.log('teste', products);
 
-  // const removeProduct = (event) => {
+    const calculateTotalPrice = () => {
+      let total = 0;
+      products.forEach((e) => {
+        const { quantity, price } = e;
+        total += quantity * parseFloat(price);
+      });
+      setTotalPrice(total.toFixed(2));
+    };
+    calculateTotalPrice();
+  }, [productsCheckout]);
+
+  // const removeProduct = (product) => {
+
   //   products;
   //   localstorage.removeItem(event.target);
   // };
@@ -36,14 +47,14 @@ const CheckoutPage = () => {
           <th>Remove Item</th>
         </thead>
         <tbody>
-          { productsCheckout.map((product) => (
+          { productsCheckout.map((product, index) => (
             <tr key={ product.id }>
               <td
                 data-testid={
                   `customer_checkout__element-order-table-item-number-${product.id}`
                 }
               >
-                { product.id }
+                { index + 1 }
               </td>
               <td
                 data-testid={
@@ -51,7 +62,6 @@ const CheckoutPage = () => {
                 }
               >
                 { product.name }
-
               </td>
               <td
                 data-testid={
@@ -81,7 +91,7 @@ const CheckoutPage = () => {
               >
                 <button
                   type="button"
-                  // onClick={}
+                  // onClick={ removeProduct(product.id) }
                 >
                   Remover
                 </button>

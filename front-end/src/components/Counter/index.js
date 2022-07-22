@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const Counter = (props) => {
-  const { testId, products, setProducts, productPrice } = props;
+  const { testId, products, setProducts, productPrice, productName } = props;
 
   const [quantity, setQuantity] = useState(0);
 
@@ -30,7 +30,7 @@ const Counter = (props) => {
     const arr = [...products];
     const index = arr.findIndex((e) => e.id === testId);
     if (index === negative) {
-      arr.push({ id: testId, quantity: 1, price: productPrice });
+      arr.push({ id: testId, quantity: 1, price: productPrice, name: productName });
       setProducts(arr);
       setQuantity(quantity + 1);
       updateLocalStorageProducts(arr);
@@ -48,7 +48,8 @@ const Counter = (props) => {
     const arr = [...products];
     const index = arr.findIndex((e) => e.id === testId);
     if (index === negative) {
-      arr.push({ id: testId, quantity: numValue, price: productPrice });
+      arr.push({
+        id: testId, quantity: numValue, price: productPrice, name: productName });
       setProducts(arr);
       setQuantity(numValue);
       updateLocalStorageProducts(arr);
@@ -98,6 +99,7 @@ Counter.propTypes = {
   })).isRequired,
   setProducts: PropTypes.func.isRequired,
   productPrice: PropTypes.string.isRequired,
+  productName: PropTypes.string.isRequired,
 };
 
 export default Counter;
