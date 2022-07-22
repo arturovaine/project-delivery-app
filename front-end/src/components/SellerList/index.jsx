@@ -4,6 +4,16 @@ import { getRequest } from '../../services/api';
 const SellerList = () => {
   const [sellers, setSellers] = useState([]);
 
+  const updateLocalStorageSellerId = (sellerId) => {
+    const prevData = JSON.parse(localStorage.getItem('carrinho'));
+    prevData.sellerId = sellerId;
+    localStorage.setItem('carrinho', JSON.stringify(prevData));
+  };
+
+  const onChangeHandler = ({ target }) => {
+    updateLocalStorageSellerId(parseInt(target.id, 10));
+  };
+
   useEffect(() => {
     const loadSellers = async () => {
       const { token } = JSON.parse(localStorage.getItem('user'));
@@ -19,12 +29,12 @@ const SellerList = () => {
       <select
         data-testid="customer_checkout__select-seller"
       >
-        <option value="null" disabled selected>selecione...</option>
         { sellers.map((e) => (
           <option
             key={ e.id }
             id={ e.id }
             value={ e.name }
+            onClick={ onChangeHandler }
           >
             {e.name}
           </option>)) }
