@@ -34,6 +34,7 @@ const Counter = (props) => {
       setProducts(arr);
       setQuantity(quantity + 1);
       updateLocalStorageProducts(arr);
+      return;
     }
     arr[index].quantity += 1;
     setQuantity(quantity + 1);
@@ -41,8 +42,22 @@ const Counter = (props) => {
     updateLocalStorageProducts(arr);
   };
 
-  const onChangeHandler = ({ target }) => {
-    setQuantity(target.value);
+  const onChangeHandler = ({ target: { value } }) => {
+    const numValue = parseInt(value, 10);
+    const negative = -1;
+    const arr = [...products];
+    const index = arr.findIndex((e) => e.id === testId);
+    if (index === negative) {
+      arr.push({ id: testId, quantity: numValue, price: productPrice });
+      setProducts(arr);
+      setQuantity(numValue);
+      updateLocalStorageProducts(arr);
+      return;
+    }
+    arr[index].quantity = numValue;
+    setQuantity(numValue);
+    setProducts(arr);
+    updateLocalStorageProducts(arr);
   };
 
   return (
