@@ -9,8 +9,8 @@ import CheckoutTotal from '../../../components/CheckoutTotal';
 const CheckoutPage = () => {
   const [productsCheckout, setProducts] = useState([]);
 
-  // const [address, setAddress] = useState('');
-  // const [addressNumber, setAddressNumber] = useState('');
+  const [address, setAddress] = useState('');
+  const [addressNumber, setAddressNumber] = useState('');
 
   const updateLocalStorageProducts = (product) => {
     const prevData = JSON.parse(localStorage.getItem('carrinho'));
@@ -54,42 +54,42 @@ const CheckoutPage = () => {
             <tr key={ product.id }>
               <td
                 data-testid={
-                  `customer_checkout__element-order-table-item-number-${product.id}`
+                  `customer_checkout__element-order-table-item-number-${index}`
                 }
               >
                 { index + 1 }
               </td>
               <td
                 data-testid={
-                  `customer_checkout__element-order-table-name-${product.id}`
+                  `customer_checkout__element-order-table-name-${index}`
                 }
               >
                 { product.name }
               </td>
               <td
                 data-testid={
-                  `customer_checkout__element-order-table-quantity-${product.id}`
+                  `customer_checkout__element-order-table-quantity-${index}`
                 }
               >
                 { product.quantity }
               </td>
               <td
                 data-testid={
-                  `customer_checkout__element-order-table-unit-price-${product.price}`
+                  `customer_checkout__element-order-table-unit-price-${index}`
                 }
               >
                 { product.price }
               </td>
               <td
                 data-testid={
-                  `customer_checkout__element-order-table-sub-total-${product.id}`
+                  `customer_checkout__element-order-table-sub-total-${index}`
                 }
               >
                 { (product.quantity * product.price).toFixed(2) }
               </td>
               <td
                 data-testid={
-                  `customer_checkout__element-order-table-remove-${product.id}`
+                  `customer_checkout__element-order-table-remove-${index}`
                 }
               >
                 <button
@@ -112,18 +112,16 @@ const CheckoutPage = () => {
       <TextInput
         label="Endereço"
         data-testid="customer_checkout__input-address"
-        // onChange={ ({ target: { value } }) => setAddress(value) }
-        password
+        onChange={ ({ target: { value } }) => setAddress(value) }
         placeholder="Travessa Terceira da Castanheira, Bairro Muruci"
-        // value={ address }
+        value={ address }
       />
       <TextInput
         label="Número"
         data-testid="customer_checkout__input-addressNumber"
-        // onChange={ ({ target: { value } }) => setAddressNumber(value) }
-        password
+        onChange={ ({ target: { value } }) => setAddressNumber(value) }
         placeholder="198"
-        // value={ addressNumber }
+        value={ addressNumber }
       />
       <Link
         to="/customer/order/details"
