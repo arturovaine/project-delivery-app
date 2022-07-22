@@ -12,6 +12,19 @@ const ProductsPage = () => {
 
   const history = useHistory();
 
+  const createCart = () => {
+    const { email } = JSON.parse(localStorage.getItem('user'));
+    const cart = {
+      customerEmail: email,
+      sellerId: 0,
+      totalPrice: 0.0,
+      deliveryAddress: '',
+      deliveryNumber: '',
+      products: [],
+    };
+    localStorage.setItem('carrinho', JSON.stringify({ ...cart }));
+  };
+
   useEffect(() => {
     const api = async () => {
       const { token } = JSON.parse(localStorage.getItem('user'));
@@ -19,6 +32,7 @@ const ProductsPage = () => {
       setProductsList(apiProducts);
       setLoading(true);
     };
+    createCart();
     api();
   }, []);
 
@@ -50,7 +64,7 @@ const ProductsPage = () => {
           onClick={ () => history.push('/customer/checkout') }
         >
           Ver carrinho: R$
-          <span>{ totalPrice }</span>
+          <span>{ 0 }</span>
         </button>
       </div>
     );
