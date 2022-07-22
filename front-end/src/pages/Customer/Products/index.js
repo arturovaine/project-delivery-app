@@ -1,29 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Navbar from '../../../components/NavBar';
 import { getRequest } from '../../../services/api';
 import Load from '../../../components/Load';
 import Counter from '../../../components/Counter';
+import ProductCartButton from '../../../components/ProductCartButton';
 
 const ProductsPage = () => {
   const [productsList, setProductsList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [products, setProducts] = useState([]);
-
-  const history = useHistory();
+  const [products, setProducts] = useState([]); // estado controlado pelo counter
 
   const createCart = () => {
-    const { email } = JSON.parse(localStorage.getItem('user'));
-    const cart = {
-      customerEmail: email,
-      sellerId: 0,
-      totalPrice: 0.0,
-      deliveryAddress: '',
-      deliveryNumber: '',
-      products: [],
-    };
-    localStorage.setItem('carrinho', JSON.stringify({ ...cart }));
+    const cart = JSON.parse(localStorage.getItem('carrinho'));
+    if (!cart) {
+      const { email } = JSON.parse(localStorage.getItem('user'));
+      const crt = {
+        customerEmail: email,
+        sellerId: 0,
+        totalPrice: 0.0,
+        deliveryAddress: '',
+        deliveryNumber: '',
+        products: [],
+      };
+      localStorage.setItem('carrinho', JSON.stringify({ ...crt }));
+    }
   };
 
   useEffect(() => {
@@ -35,7 +37,7 @@ const ProductsPage = () => {
     };
     createCart();
     api();
-  }, []);
+  }, [products]);
 
   const listProducts = () => {
     if (productsList.length === 0) {
@@ -57,18 +59,16 @@ const ProductsPage = () => {
                 testId={ product.id }
                 products={ products }
                 setProducts={ setProducts }
+                productPrice={ product.price }
               />
             </div>
           ))
         }
-        <button
-          type="button"
-          data-testid="customer_products__checkout-bottom-value"
-          onClick={ () => history.push('/customer/checkout') }
-        >
-          Ver carrinho: R$
-          <span>{ totalPrice }</span>
-        </button>
+        <ProductCartButton
+          totalPrice={ totalPrice }
+          setTotalPrice={ setTotalPrice }
+          products={ products }
+        />
       </div>
     );
   };
