@@ -2,18 +2,43 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const Counter = (props) => {
-  const { testId } = props;
+  const { testId, products, setProducts } = props;
 
   const [quantity, setQuantity] = useState(0);
 
+  const updateLocalStorageProducts = (product) => {
+    const prevData = JSON.parse(localStorage.getItem('carrinho'));
+    prevData.products = product;
+    localStorage.setItem('carrinho', JSON.stringify(prevData));
+  };
+
   const onClickRm = () => {
+    const negative = -1;
+    const arr = [...products];
+    const index = arr.findIndex((e) => e.id === testId);
+    if (index === negative) return;
     if (quantity > 0) {
+      arr[index].quantity -= 1;
+      setProducts(arr);
       setQuantity(quantity - 1);
+      updateLocalStorageProducts(arr);
     }
   };
 
   const onClickAdd = () => {
+    const negative = -1;
+    const arr = [...products];
+    const index = arr.findIndex((e) => e.id === testId);
+    if (index === negative) {
+      arr.push({ id: testId, quantity: 1 });
+      setProducts(arr);
+      setQuantity(quantity + 1);
+      updateLocalStorageProducts(arr);
+    }
+    arr[index].quantity += 1;
     setQuantity(quantity + 1);
+    setProducts(arr);
+    updateLocalStorageProducts(arr);
   };
 
   const onChangeHandler = ({ target }) => {
@@ -51,7 +76,12 @@ const Counter = (props) => {
 };
 
 Counter.propTypes = {
-  testId: PropTypes.string.isRequired,
+  testId: PropTypes.number.isRequired,
+  products: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    quantity: PropTypes.number,
+  })).isRequired,
+  setProducts: PropTypes.func.isRequired,
 };
 
 export default Counter;
