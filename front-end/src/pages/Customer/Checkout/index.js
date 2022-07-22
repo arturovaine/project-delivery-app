@@ -1,4 +1,5 @@
 import { useState, useEffect, React } from 'react';
+import { Link } from 'react-router-dom';
 import TextInput from '../../../components/TextInput';
 // import Button from '../../../components/Button';
 import Navbar from '../../../components/NavBar';
@@ -15,6 +16,11 @@ const CheckoutPage = () => {
     setTotalPrice(totalPrice);
     console.log('teste', products);
   }, []);
+
+  // const removeProduct = (event) => {
+  //   products;
+  //   localstorage.removeItem(event.target);
+  // };
 
   return (
     <main>
@@ -117,12 +123,16 @@ const CheckoutPage = () => {
         placeholder="198"
         // value={ addressNumber }
       />
-      <button
-        type="button"
-        testId="customer_checkout__button-submit-order"
+      <Link
+        to="/customer/order/details"
       >
-        FINALIZAR PEDIDO
-      </button>
+        <button
+          type="button"
+          testId="customer_checkout__button-submit-order"
+        >
+          FINALIZAR PEDIDO
+        </button>
+      </Link>
     </main>
   );
 };
