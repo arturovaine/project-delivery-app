@@ -8,7 +8,8 @@ import Counter from '../../../components/Counter';
 const ProductsPage = () => {
   const [productsList, setProductsList] = useState([]);
   const [loading, setLoading] = useState(false);
-  // const [totalPrice, setTotalPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [products, setProducts] = useState([]);
 
   const history = useHistory();
 
@@ -54,6 +55,8 @@ const ProductsPage = () => {
               </Link>
               <Counter
                 testId={ product.id }
+                products={ products }
+                setProducts={ setProducts }
               />
             </div>
           ))
@@ -64,7 +67,7 @@ const ProductsPage = () => {
           onClick={ () => history.push('/customer/checkout') }
         >
           Ver carrinho: R$
-          <span>{ 0 }</span>
+          <span>{ totalPrice }</span>
         </button>
       </div>
     );
