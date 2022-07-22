@@ -8,6 +8,7 @@ const NavBar = () => {
   const { name, role } = JSON.parse(localStorage.getItem('user'));
 
   const onClickLogoutHandler = () => {
+    localStorage.removeItem('carrinho');
     localStorage.removeItem('user');
     history.push('/login');
   };
