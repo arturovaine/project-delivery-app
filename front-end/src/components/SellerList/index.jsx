@@ -17,9 +17,9 @@ const SellerList = () => {
     <label htmlFor="customer_checkout__select-seller">
       P.Vendedora Responsável
       <select
-        testId="customer_checkout__select-seller"
+        data-testid="customer_checkout__select-seller"
       >
-        <option selected disabled value="null">selecione...</option>
+        <option value="null" disabled selected>selecione...</option>
         { sellers.map((e) => (
           <option
             key={ e.id }
