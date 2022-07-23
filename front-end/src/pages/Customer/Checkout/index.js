@@ -1,6 +1,6 @@
 import { useState, useEffect, React } from 'react';
 import { Link } from 'react-router-dom';
-import TextInput from '../../../components/TextInput';
+
 // import Button from '../../../components/Button';
 import Navbar from '../../../components/NavBar';
 import SellerList from '../../../components/SellerList';
