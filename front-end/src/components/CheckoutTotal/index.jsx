@@ -4,6 +4,13 @@ import Proptypes from 'prop-types';
 const CheckoutTotal = (props) => {
   const { products } = props;
   const [totalPriceCheckout, setTotalPrice] = useState(0);
+
+  const updateLocalStorageTotalPrice = (price) => {
+    const prevData = JSON.parse(localStorage.getItem('carrinho'));
+    prevData.totalPrice = price;
+    localStorage.setItem('carrinho', JSON.stringify(prevData));
+  };
+
   useEffect(() => {
     const calculateTotalPrice = () => {
       let total = 0;
@@ -12,6 +19,7 @@ const CheckoutTotal = (props) => {
         total += quantity * parseFloat(price);
       });
       setTotalPrice(total.toFixed(2));
+      updateLocalStorageTotalPrice(total.toFixed(2));
     };
     calculateTotalPrice();
   }, [products]);
