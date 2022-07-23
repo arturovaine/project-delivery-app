@@ -23,7 +23,7 @@ const CheckoutTotal = (props) => {
       data-testid="customer_checkout__element-order-total-price"
     >
       Total: R$
-      {totalPriceCheckout}
+      {(totalPriceCheckout).toString().replace('.', ',')}
     </button>
   );
 };

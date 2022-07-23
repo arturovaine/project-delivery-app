@@ -78,14 +78,17 @@ const CheckoutPage = () => {
                   `customer_checkout__element-order-table-unit-price-${index}`
                 }
               >
-                { product.price }
+                { (product.price).toString().replace('.', ',') }
               </td>
               <td
                 data-testid={
                   `customer_checkout__element-order-table-sub-total-${index}`
                 }
               >
-                { (product.quantity * product.price).toFixed(2) }
+                {
+                  ((product.quantity * product.price)
+                    .toFixed(2)).toString().replace('.', ',')
+                }
               </td>
               <td
                 data-testid={
@@ -109,14 +112,14 @@ const CheckoutPage = () => {
       />
       <header>Detalhes e Endereço para Entrega</header>
       <SellerList />
-      <TextInput
+      <input
         label="Endereço"
         data-testid="customer_checkout__input-address"
         onChange={ ({ target: { value } }) => setAddress(value) }
         placeholder="Travessa Terceira da Castanheira, Bairro Muruci"
         value={ address }
       />
-      <TextInput
+      <input
         label="Número"
         data-testid="customer_checkout__input-addressNumber"
         onChange={ ({ target: { value } }) => setAddressNumber(value) }
