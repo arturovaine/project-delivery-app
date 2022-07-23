@@ -1,5 +1,6 @@
 import { useState, useEffect, React } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import { postCheckout } from '../../../services/api';
 
 // import Button from '../../../components/Button';
 import Navbar from '../../../components/NavBar';
@@ -11,6 +12,7 @@ const CheckoutPage = () => {
 
   const [address, setAddress] = useState('');
   const [addressNumber, setAddressNumber] = useState('');
+  const history = useHistory();
 
   const updateLocalStorageProducts = (product) => {
     const prevData = JSON.parse(localStorage.getItem('carrinho'));
@@ -24,6 +26,24 @@ const CheckoutPage = () => {
     // console.log(newData);
     setProducts(newData);
     updateLocalStorageProducts(newData);
+  };
+
+  const updateLocalStorageAddress = () => {
+    const prevData = JSON.parse(localStorage.getItem('carrinho'));
+    prevData.deliveryAddress = address;
+    prevData.deliveryNumber = addressNumber;
+    localStorage.setItem('carrinho', JSON.stringify(prevData));
+  };
+
+  const checkout = () => {
+    updateLocalStorageAddress();
+    const { token } = JSON.parse(localStorage.getItem('user'));
+    const body = JSON.parse(localStorage.getItem('carrinho'));
+    body.totalPrice = parseFloat(body.totalPrice);
+    postCheckout('/sales/checkout', { ...body }, token)
+      .then(({ saleId }) => {
+        history.push(`/customer/orders/${saleId}`);
+      });
   };
 
   useEffect(() => {
@@ -126,16 +146,14 @@ const CheckoutPage = () => {
         placeholder="198"
         value={ addressNumber }
       />
-      <Link
-        to="/customer/order/details"
+
+      <button
+        type="button"
+        data-testid="customer_checkout__button-submit-order"
+        onClick={ checkout }
       >
-        <button
-          type="button"
-          data-testid="customer_checkout__button-submit-order"
-        >
-          FINALIZAR PEDIDO
-        </button>
-      </Link>
+        FINALIZAR PEDIDO
+      </button>
     </main>
   );
 };
