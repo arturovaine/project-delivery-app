@@ -17,6 +17,12 @@ export const postRequest = async (endpoint, body) => {
   return data;
 };
 
+export const postCheckout = async (endpoint, body, token) => {
+  setToken(token);
+  const data = await api.post(endpoint, body);
+  return data;
+};
+
 export const getRequest = async (endpoint, token) => {
   setToken(token);
   const { data } = await api.get(endpoint);
