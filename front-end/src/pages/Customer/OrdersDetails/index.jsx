@@ -57,7 +57,11 @@ const OrdersDetailsPage = () => {
               </Table>
               <div>
                 Total:
-                <span>{getTotalPrice()}</span>
+                <span
+                  data-testid="customer_order_details__element-order-total-price"
+                >
+                  {getTotalPrice()}
+                </span>
               </div>
             </div>
           )
