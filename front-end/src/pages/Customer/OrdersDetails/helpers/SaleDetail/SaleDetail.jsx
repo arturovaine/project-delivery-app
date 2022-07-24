@@ -4,13 +4,14 @@ import PropTypes from 'prop-types';
 const SaleDetail = ({ orderNumber, sellerName, date, status }) => {
   const transformDate = () => {
     const nDate = date.split('T')[0];
-    return nDate;
+
+    return nDate.split('-').reverse().join('/');
   };
 
   return (
     <div>
       <div>
-        <p>Pedido</p>
+        Pedido:
         <span
           data-testid="customer_order_details__element-order-details-label-order-id"
         >
@@ -18,7 +19,7 @@ const SaleDetail = ({ orderNumber, sellerName, date, status }) => {
         </span>
       </div>
       <div>
-        <p>Vend:</p>
+        Vend:
         <span
           data-testid="customer_order_details__element-order-details-label-seller-name"
         >
