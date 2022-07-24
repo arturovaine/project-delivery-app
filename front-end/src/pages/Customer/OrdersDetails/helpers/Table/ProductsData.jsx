@@ -13,6 +13,8 @@ const ProductsData = ({ position, item }) => {
     return subTotal.toString().replace('.', ',');
   };
 
+  const editPrice = () => price.replace('.', ',');
+
   return (
     <tr>
       <td
@@ -41,7 +43,7 @@ const ProductsData = ({ position, item }) => {
           `customer_checkout__element-order-table-unit-price-${count}`
         }
       >
-        {price}
+        {editPrice()}
       </td>
       <td
         data-testid={
