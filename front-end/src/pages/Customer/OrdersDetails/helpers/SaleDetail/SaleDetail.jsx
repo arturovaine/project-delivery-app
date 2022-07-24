@@ -11,18 +11,37 @@ const SaleDetail = ({ orderNumber, sellerName, date, status }) => {
     <div>
       <div>
         <p>Pedido</p>
-        <span>{orderNumber}</span>
+        <span
+          data-testid="customer_order_details__element-order-details-label-order-id"
+        >
+          {orderNumber}
+        </span>
       </div>
       <div>
-        <p>
-          Vend:
+        <p>Vend:</p>
+        <span
+          data-testid="customer_order_details__element-order-details-label-seller-name"
+        >
           {sellerName}
-        </p>
+        </span>
       </div>
-      <div>{transformDate()}</div>
-      <div>{status}</div>
+      <div
+        data-testid="customer_order_details__element-order-details-label-order-date"
+      >
+        {transformDate()}
+      </div>
+      <div
+        data-testid="customer_order_details__element-order-details-label-delivery-status"
+      >
+        {status}
+      </div>
       <div>
-        <button type="button">MARCAR COMO ENTREGUE</button>
+        <button
+          type="button"
+          data-testid="customer_order_details__button-delivery-check"
+        >
+          MARCAR COMO ENTREGUE
+        </button>
       </div>
     </div>
   );
