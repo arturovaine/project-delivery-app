@@ -46,7 +46,7 @@ module.exports = {
         allowNull: false,
       },
       status: {
-        type: Sequelize.ENUM('Pendente','Preparando', 'Em Trânsito', 'Entregue'),
+        type: Sequelize.STRING(50),
         defaultValue: 'Pendente',
         allowNull: false,
       }, 
@@ -59,3 +59,4 @@ module.exports = {
      
   }
 };
+//ENUM('Pendente','Preparando', 'Em Trânsito', 'Entregue')

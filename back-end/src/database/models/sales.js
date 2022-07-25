@@ -53,7 +53,7 @@ const SaleModel = (sequelize, DataTypes) => {
       field: 'sale_date',
     },
     status: {
-      type: DataTypes.ENUM('Pendente','Preparando', 'Em Trânsito', 'Entregue'),
+      type: DataTypes.STRING(50),
       defaultValue: 'Pendente',
       allowNull: false,
     },

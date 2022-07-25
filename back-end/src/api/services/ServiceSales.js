@@ -15,7 +15,7 @@ const createSaleWithProducts = async (saleData) => {
       const { id, quantity } = e;
       return salesProductsModel.create(saleId, id, quantity);
     }));
-    return { saleId };
+    return { id: saleId };
   } catch (error) {
     if (error instanceof CustomErrors) {
       throw new CustomErrors(error.statusCode, error.message);
