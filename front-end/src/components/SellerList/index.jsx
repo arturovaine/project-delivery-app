@@ -28,13 +28,13 @@ const SellerList = () => {
       P.Vendedora Responsável
       <select
         id="select-seller"
+        data-testid="customer_checkout__select-seller"
       >
         { sellers.map((e) => (
           <option
             key={ e.id }
             id={ e.id }
             value={ e.name }
-            data-testid="customer_checkout__select-seller"
             onClick={ onChangeHandler }
           >
             {e.name}
