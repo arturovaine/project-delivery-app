@@ -7,6 +7,8 @@ import ProductsCustomer from './pages/Customer/Products';
 import CheckoutCustomer from './pages/Customer/Checkout';
 import OrdersCustomer from './pages/Customer/Orders';
 import OrdersDetailsCustomer from './pages/Customer/OrdersDetails';
+import SellerOrders from './pages/Seller/Orders';
+import SellerOrderDetails from './pages/Seller/OrderDetails';
 
 export default class Routes extends Component {
   render() {
@@ -28,6 +30,8 @@ export default class Routes extends Component {
               path="/customer/orders/:id"
               component={ OrdersDetailsCustomer }
             />
+            <Route exact path="/seller/orders" component={ SellerOrders } />
+            <Route exact path="/seller/orders/:id" component={ SellerOrderDetails } />
           </Switch>
         </main>
       </div>
