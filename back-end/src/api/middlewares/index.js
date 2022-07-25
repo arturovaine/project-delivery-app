@@ -71,6 +71,7 @@ const verifyToken = (req, res, next) => {
     const { authorization } = req.headers;
     if (!authorization) return res.status(401).send({ error: 'Unauthorized' });
     const checkAuth = jwtVerify(authorization);
+    res.locals.email = checkAuth.email;
     if (checkAuth) return next();
   } catch (err) {
     return res.status(401).send({ error: err.message });
