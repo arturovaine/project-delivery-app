@@ -10,7 +10,6 @@ const createSaleWithProducts = async (req, res) => {
     if (error instanceof CustomErrors) {
       return res.status(error.statusCode).send({ error: error.message });
     }
-    return res.status(500).send({ error: error.message });
   }
 };
 
@@ -24,7 +23,6 @@ const findSaleAndProducts = async (req, res) => {
      if (error instanceof CustomErrors) {
        return res.status(error.statusCode).send({ error: error.message });
      }
-     return res.status(500).send({ error: error.message });
    }
 };
 

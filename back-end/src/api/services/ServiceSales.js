@@ -33,7 +33,6 @@ const findSaleAndProducts = async (id) => {
     if (error instanceof CustomErrors) {
       throw new CustomErrors(error.statusCode, error.message);
     }
-    throw new CustomErrors(500, 'Service unavailable');
   }
 };
 

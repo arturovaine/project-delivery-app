@@ -9,7 +9,6 @@ const allProducts = async (_req, res) => {
     if (error instanceof CustomErrors) {
       return res.status(error.statusCode).send({ error: error.message });
     }
-    return res.status(500).end();
   }
 };
 
