@@ -11,6 +11,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLogged, setIsLogged] = useState(false);
+  const [userRole, SetUserRole] = useState('');
   const [failedTryLogin, setFailedTryLogin] = useState(false);
   const [buttonLoginDisabled, setbuttonLoginDisabled] = useState(true);
 
@@ -25,6 +26,7 @@ const Login = () => {
       const data = await postRequest(endpoint, { email, password });
 
       localStorage.setItem('user', JSON.stringify({ ...data }));
+      SetUserRole(data.role);
       setIsLogged(true);
     } catch (error) {
       setFailedTryLogin(true);
@@ -44,7 +46,8 @@ const Login = () => {
     else setbuttonLoginDisabled(true);
   }, [email, password]);
 
-  if (isLogged) return <Redirect to="/customer/products" />;
+  if (isLogged && userRole === 'customer') return <Redirect to="/customer/products" />;
+  if (isLogged && userRole === 'seller') return <Redirect to="/seller/orders" />;
 
   return (
     <section className="login-area">
