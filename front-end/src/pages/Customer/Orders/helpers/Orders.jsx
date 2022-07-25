@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const Orders = ({ orderNumber, status, date, totalPrice }) => {
   const totalPriceWithComma = () => totalPrice.replace('.', ',');
@@ -10,30 +11,32 @@ const Orders = ({ orderNumber, status, date, totalPrice }) => {
   };
 
   return (
-    <section>
-      <div
-        data-testid={ `customer_orders__element-order-id-${orderNumber}` }
-      >
-        {orderNumber}
-      </div>
-      <div
-        data-testid={ `customer_orders__element-delivery-status-${orderNumber}` }
-      >
-        {status}
-      </div>
-      <div>
+    <div className="orders-card">
+      <Link to={ `/customer/orders/${orderNumber}` }>
         <div
-          data-testid={ `customer_orders__element-order-date-${orderNumber}` }
+          data-testid={ `customer_orders__element-order-id-${orderNumber}` }
         >
-          {transformDate()}
+          {orderNumber}
         </div>
         <div
-          data-testid={ `customer_orders__element-card-price-${orderNumber}` }
+          data-testid={ `customer_orders__element-delivery-status-${orderNumber}` }
         >
-          {totalPriceWithComma()}
+          {status}
         </div>
-      </div>
-    </section>
+        <div>
+          <div
+            data-testid={ `customer_orders__element-order-date-${orderNumber}` }
+          >
+            {transformDate()}
+          </div>
+          <div
+            data-testid={ `customer_orders__element-card-price-${orderNumber}` }
+          >
+            {totalPriceWithComma()}
+          </div>
+        </div>
+      </Link>
+    </div>
   );
 };
 
