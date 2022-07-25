@@ -26,7 +26,7 @@ const getAllUsers = async () => {
 
 const remove = async (name, email, password) => {
   const userExists = await findUser(email);
-  if (!userExists) {
+  if (userExists) {
     const hashPassword = md5(password);
     await removeUser(name, email, hashPassword);
     return { name, email };
