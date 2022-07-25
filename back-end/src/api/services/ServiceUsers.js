@@ -19,7 +19,7 @@ const getAllUsers = async () => {
   const allUsers = await findAllUsers();
   
   if (!allUsers) {
-    throw new CustomErrors(404, 'User does not exist');
+    throw new CustomErrors(404, 'User do not exist');
   }
   return allUsers;
 };

@@ -3,23 +3,43 @@ import { Link } from 'react-router-dom';
 import Navbar from '../../../components/NavBar';
 import { getRequest } from '../../../services/api';
 import Load from '../../../components/Load';
-// import Counter from '../../../components/Counter';
+import Counter from '../../../components/Counter';
+import ProductCartButton from '../../../components/ProductCartButton';
 
 const ProductsPage = () => {
   const [productsList, setProductsList] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [products, setProducts] = useState([]); // estado controlado pelo counter
+
+  const createCart = () => {
+    const cart = JSON.parse(localStorage.getItem('carrinho'));
+    if (!cart) {
+      const { email } = JSON.parse(localStorage.getItem('user'));
+      const crt = {
+        customerEmail: email,
+        sellerId: 2,
+        totalPrice: 0.0,
+        deliveryAddress: '',
+        deliveryNumber: '',
+        products: [],
+      };
+      localStorage.setItem('carrinho', JSON.stringify({ ...crt }));
+    }
+  };
 
   useEffect(() => {
     const api = async () => {
-      const apiProducts = await getRequest('/products');
+      const { token } = JSON.parse(localStorage.getItem('user'));
+      const apiProducts = await getRequest('/products', token);
       setProductsList(apiProducts);
       setLoading(true);
     };
+    createCart();
     api();
-  }, []);
+  }, [products]);
 
   const listProducts = () => {
-    console.log(productsList);
     if (productsList.length === 0) {
       return (<p>nenhum produto encontrado</p>);
     } return (
@@ -29,15 +49,39 @@ const ProductsPage = () => {
             <div key={ product.id }>
               <Link
                 to={ `/customer/orders/${product.id}` }
-                data-testid={ `customer_products__element-card-price-${product.id}` }
               >
-                <img src={ product.urlImage } alt={ product.name } />
-                <p>{product.name}</p>
-                <p>{product.price}</p>
+                <img
+                  src={ product.urlImage }
+                  alt={ product.name }
+                  data-testid={ `customer_products__img-card-bg-image-${product.id}` }
+                />
+                <p
+                  data-testid={ `customer_products__element-card-title-${product.id}` }
+                >
+                  {product.name}
+                </p>
+                <p
+                  data-testid={ `customer_products__element-card-price-${product.id}` }
+                >
+                  {(product.price).toString().replace('.', ',')}
+                </p>
               </Link>
+              <Counter
+                testId={ product.id }
+                products={ products }
+                setProducts={ setProducts }
+                productPrice={ product.price }
+                productName={ product.name }
+              />
             </div>
           ))
         }
+        <ProductCartButton
+          totalPrice={ totalPrice }
+          setTotalPrice={ setTotalPrice }
+          products={ products }
+          productName={ products.name }
+        />
       </div>
     );
   };

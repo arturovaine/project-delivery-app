@@ -2,10 +2,10 @@ const express = require('express');
 
 const router = express.Router();
 
-const ControllerSales = (_req, res) => res.status(418).end();
+const ControllerSales = require('../controllers/ControllerSales');
+const { verifySalesCheckoutData, verifyToken } = require('../middlewares');
 
-router.post('/', ControllerSales);
-
-// router.post('/', ControllerSales.addSale);
+router.post('/checkout',
+verifyToken, verifySalesCheckoutData, ControllerSales.createSaleWithProducts);
 
 module.exports = router;

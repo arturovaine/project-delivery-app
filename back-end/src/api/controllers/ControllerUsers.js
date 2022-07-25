@@ -18,7 +18,7 @@ const getAllUsers = async (_req, res) => {
   try {
     const allUsers = await ServiceUsers.getAllUsers();
     const tabulatedUsers = [];
-    allUsers.map((user)=>{
+    allUsers.forEach((user) => {
       const { id, name, email, role } = user;
       tabulatedUsers.push({ id, name, email, role });
     });
