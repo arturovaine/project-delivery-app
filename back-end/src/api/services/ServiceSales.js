@@ -15,7 +15,7 @@ const createSaleWithProducts = async (saleData) => {
       const { id, quantity } = e;
       return salesProductsModel.create(saleId, id, quantity);
     }));
-    return { saleId };
+    return { id: saleId };
   } catch (error) {
     if (error instanceof CustomErrors) {
       throw new CustomErrors(error.statusCode, error.message);
@@ -37,7 +37,22 @@ const findSaleAndProducts = async (id) => {
   }
 };
 
+// customer/orders/
+const findAllCustomerSales = async (email) => {
+  try {
+    const user = await userModel.findUser(email);
+    const sales = await salesModel.readAllByUserId(user.id);
+    return sales;
+  } catch (error) {
+    if (error instanceof CustomErrors) {
+      throw new CustomErrors(error.statusCode, error.message);
+    }
+    throw new CustomErrors(500, 'Service unavailable');
+  }
+};
+
 module.exports = {
   createSaleWithProducts,
   findSaleAndProducts,
+  findAllCustomerSales,
 };
