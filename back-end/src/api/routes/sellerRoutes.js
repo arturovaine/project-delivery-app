@@ -7,6 +7,6 @@ const { verifyToken } = require('../middlewares');
 
 router.get('/list', verifyToken, ControllerSeller.findAllSellers);
 router.get('/orders', verifyToken, ControllerSeller.findAllOrders);
-// router.get('/orders/:id');
+router.get('/orders/:id', verifyToken, ControllerSeller.sellerOrder);
 
 module.exports = router;

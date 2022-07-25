@@ -1,5 +1,9 @@
 const CustomErrors = require('../errors/customErrors');
-const { findAllSellersService, findAllRelatedOrders } = require('../services/ServiceSeller');
+const {
+  findAllSellersService,
+  findAllRelatedOrders,
+  sellerOrderDetails, 
+} = require('../services/ServiceSeller');
 
 const findAllSellers = async (_req, res) => {
   try {
@@ -21,8 +25,19 @@ const findAllOrders = async (req, res) => {
     if (error instanceof CustomErrors) {
       return res.status(error.statusCode).send({ error: error.message });
     }
-    return res.status(500).end();
   }
 };
 
-module.exports = { findAllSellers, findAllOrders };
+const sellerOrder = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const orderData = await sellerOrderDetails(id);
+    return res.status(200).json(orderData);
+  } catch (error) {
+    if (error instanceof CustomErrors) {
+      return res.status(error.statusCode).send({ error: error.message });
+    }
+  }
+};
+
+module.exports = { findAllSellers, findAllOrders, sellerOrder };
