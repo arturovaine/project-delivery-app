@@ -1,4 +1,4 @@
-const { Sale, SalesProducts } = require('../../database/models');
+const { Sale, SalesProducts, User, Product } = require('../../database/models');
 const CustomErrors = require('../errors/customErrors');
 
 const create = async (saleData) => {
@@ -25,7 +25,15 @@ const readOne = async (id) => {
   try {
     const sale = await Sale.findOne({ 
       where: { id }, 
-      include: [{ model: SalesProducts, attributes: { exclude: ['ProductId', 'SaleId'] } }],
+      include: [
+        { 
+          model: SalesProducts,
+          attributes: { exclude: ['ProductId', 'SaleId', 'saleId'] },
+          include: [{ model: Product, as: 'product', attributes: { exclude: ['id', 'urlImage'] } }],
+        },
+        { model: User, as: 'user', attributes: { exclude: ['password', 'id'] } },
+        { model: User, as: 'seller', attributes: { exclude: ['password', 'id'] } },
+      ],
       attributes: { exclude: ['UserId'] },
     });
     return sale;

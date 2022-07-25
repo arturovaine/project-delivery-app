@@ -18,6 +18,20 @@ const {
   checkProductsData,
  } = require('./salesRouteFunctions');
 
+const verifyOnlyEmail = (req, res, next) => {
+  try {
+    const { email } = req.body;
+    const validations = [isEmailValid(email)];
+    const [e] = validations;
+    if (e) next();
+  } catch (error) {
+      if (error instanceof CustomErrors) {
+        return res.status(error.statusCode).send({ error: error.message });
+      }
+      return res.status(500).end();
+  }
+};
+
 const verifyLogin = (req, res, next) => {
   try {
     console.log(req);
@@ -58,6 +72,7 @@ const verifyToken = (req, res, next) => {
     const { authorization } = req.headers;
     if (!authorization) return res.status(401).send({ error: 'Unauthorized' });
     const checkAuth = jwtVerify(authorization);
+    res.locals.email = checkAuth.email;
     if (checkAuth) return next();
   } catch (err) {
     return res.status(401).send({ error: err.message });
@@ -85,4 +100,10 @@ const verifySalesCheckoutData = (req, res, next) => {
   }
 };
 
-module.exports = { verifyLogin, verifyRegister, verifyToken, verifySalesCheckoutData };
+module.exports = {
+  verifyLogin, 
+  verifyRegister, 
+  verifyToken, 
+  verifySalesCheckoutData,
+  verifyOnlyEmail,
+};

@@ -41,8 +41,8 @@ const CheckoutPage = () => {
     const body = JSON.parse(localStorage.getItem('carrinho'));
     body.totalPrice = parseFloat(body.totalPrice);
     postCheckout('/sales/checkout', { ...body }, token)
-      .then(({ saleId }) => {
-        history.push(`/customer/orders/${saleId}`);
+      .then(({ id }) => {
+        history.push(`/customer/orders/${id}`);
       });
   };
 

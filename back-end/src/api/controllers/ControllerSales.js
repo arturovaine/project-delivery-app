@@ -26,7 +26,22 @@ const findSaleAndProducts = async (req, res) => {
    }
 };
 
+// customer/orders/
+const findAllCustomerSales = async (req, res) => {
+  try {
+    const { email } = res.locals;
+    const salesData = await salesService.findAllCustomerSales(email);
+    return res.status(200).json(salesData);
+  } catch (error) {
+    if (error instanceof CustomErrors) {
+      return res.status(error.statusCode).send({ error: error.message });
+    }
+    return res.status(500).send({ error: error.message });
+  }
+};
+
 module.exports = {
   createSaleWithProducts,
   findSaleAndProducts,
+  findAllCustomerSales,
 };

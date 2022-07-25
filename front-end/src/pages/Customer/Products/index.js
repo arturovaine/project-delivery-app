@@ -18,7 +18,7 @@ const ProductsPage = () => {
       const { email } = JSON.parse(localStorage.getItem('user'));
       const crt = {
         customerEmail: email,
-        sellerId: 0,
+        sellerId: 2,
         totalPrice: 0.0,
         deliveryAddress: '',
         deliveryNumber: '',
