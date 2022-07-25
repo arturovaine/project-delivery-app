@@ -24,16 +24,17 @@ const SellerList = () => {
   }, []);
 
   return (
-    <label htmlFor="customer_checkout__select-seller">
+    <label htmlFor="select-seller">
       P.Vendedora Responsável
       <select
-        data-testid="customer_checkout__select-seller"
+        id="select-seller"
       >
         { sellers.map((e) => (
           <option
             key={ e.id }
             id={ e.id }
             value={ e.name }
+            data-testid="customer_checkout__select-seller"
             onClick={ onChangeHandler }
           >
             {e.name}
