@@ -1,4 +1,5 @@
-const { findAllSellers } = require('../models/userModel');
+const { findAllSellers, findUser } = require('../models/userModel');
+const { readAllBySellerId } = require('../models/salesModel');
 const CustomErrors = require('../errors/customErrors');
 
 const findAllSellersService = async () => {
@@ -10,4 +11,17 @@ const findAllSellersService = async () => {
   }
 };
 
-module.exports = { findAllSellersService };
+const findAllRelatedOrders = async (email) => {
+  try {
+    const seller = await findUser(email);
+    const sales = await readAllBySellerId(seller.id);
+    return sales;
+  } catch (error) {
+    throw new CustomErrors(500, error.message);
+  }
+};
+
+module.exports = { 
+  findAllSellersService,
+  findAllRelatedOrders,
+};
