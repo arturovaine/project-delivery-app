@@ -54,7 +54,7 @@ const Login = () => {
       <img src={ logo } alt="Logo do App de Delivery" />
       <form>
         <h1>App de Delivery</h1>
-        <TextInput
+        <input
           label="E-mail"
           testId="common_login__input-email"
           onChange={ ({ target: { value } }) => setEmail(value) }
@@ -62,7 +62,7 @@ const Login = () => {
           placeholder="seu-email@site.com.br"
           value={ email }
         />
-        <TextInput
+        <input
           label="Senha"
           testId="common_login__input-password"
           onChange={ ({ target: { value } }) => setPassword(value) }

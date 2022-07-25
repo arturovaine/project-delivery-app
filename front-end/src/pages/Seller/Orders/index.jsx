@@ -20,7 +20,7 @@ const Orders = () => {
   return (
     <main>
       <NavBar />
-      <h1>Teste</h1>
+      <h1>Pedidos dos Clientes</h1>
       {
         !isLoading ? (
           orders.map((e) => (
