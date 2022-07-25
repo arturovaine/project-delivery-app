@@ -55,7 +55,7 @@ const Login = () => {
         <h1>App de Delivery</h1>
         <input
           label="E-mail"
-          testId="common_login__input-email"
+          data-testid="common_login__input-email"
           onChange={ ({ target: { value } }) => setEmail(value) }
           password={ false }
           placeholder="seu-email@site.com.br"
@@ -63,7 +63,7 @@ const Login = () => {
         />
         <input
           label="Senha"
-          testId="common_login__input-password"
+          data-testid="common_login__input-password"
           onChange={ ({ target: { value } }) => setPassword(value) }
           password
           placeholder="Sua senha"
