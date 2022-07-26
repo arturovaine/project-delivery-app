@@ -2,7 +2,8 @@ const CustomErrors = require('../errors/customErrors');
 const {
   findAllSellersService,
   findAllRelatedOrders,
-  sellerOrderDetails, 
+  sellerOrderDetails,
+  updateStatus,
 } = require('../services/ServiceSeller');
 
 const findAllSellers = async (_req, res) => {
@@ -40,4 +41,22 @@ const sellerOrder = async (req, res) => {
   }
 };
 
-module.exports = { findAllSellers, findAllOrders, sellerOrder };
+const updateSaleStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+    await updateStatus(id, status);
+    return res.status(200).json(id);
+  } catch (error) {
+    if (error instanceof CustomErrors) {
+      return res.status(error.statusCode).send({ error: error.message });
+    }
+  }
+};
+
+module.exports = {
+  findAllSellers,
+  findAllOrders,
+  sellerOrder,
+  updateSaleStatus,
+};

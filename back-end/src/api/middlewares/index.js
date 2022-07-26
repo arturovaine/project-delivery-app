@@ -34,14 +34,12 @@ const verifyOnlyEmail = (req, res, next) => {
 
 const verifyLogin = (req, res, next) => {
   try {
-    console.log(req);
     validLoginKeys(req);
     const { email, password } = req.body;
     const validations = [isEmailValid(email), isPasswordValid(password)];
     const [e, p] = validations;
     if (e && p) next();
   } catch (error) {
-      console.log(error);
       if (error instanceof CustomErrors) {
         return res.status(error.statusCode).send({ error: error.message });
       }
@@ -60,7 +58,6 @@ const verifyRegister = (req, res, next) => {
     const isValid = validations.every((e) => e === true);
     return isValid ? next() : '';
   } catch (error) {
-    console.log(error);
       if (error instanceof CustomErrors) {
         return res.status(error.statusCode).send({ error: error.message });
       }
