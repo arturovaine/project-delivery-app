@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { patchSaleStatus } from '../../../../../services/api';
 
 const SaleDetail = ({ orderNumber, date, status }) => {
   const [orderStatus, setOrderStatus] = useState(status);
@@ -26,12 +27,18 @@ const SaleDetail = ({ orderNumber, date, status }) => {
     }
   };
 
-  const onClickPrepare = () => {
-    setOrderStatus('Preparando');
+  const onClickPrepare = async () => {
+    const statusP = { status: 'Preparando' };
+    const { token } = JSON.parse(localStorage.getItem('user'));
+    await patchSaleStatus(`/sellers/update/${orderNumber}`, statusP, token);
+    setOrderStatus(statusP.status);
   };
 
-  const onClickDispatch = () => {
-    setOrderStatus('Em Trânsito');
+  const onClickDispatch = async () => {
+    const statusD = { status: 'Em Trânsito' };
+    const { token } = JSON.parse(localStorage.getItem('user'));
+    await patchSaleStatus(`/sellers/update/${orderNumber}`, statusD, token);
+    setOrderStatus(statusD.status);
   };
 
   useEffect(() => {
@@ -56,7 +63,7 @@ const SaleDetail = ({ orderNumber, date, status }) => {
       <div
         data-testid="seller_order_details__element-order-details-label-delivery-status"
       >
-        {status}
+        {orderStatus}
       </div>
       <div>
         <button
