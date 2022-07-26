@@ -42,21 +42,11 @@ const readOne = async (id) => {
   }
 };
 
-const findSaleAndRelatedProductsByUserId = async (userId) => {
-  try {
-    const saleAndProduct = await Sale.findAll({ 
-      where: { userId }, include: [{ model: SalesProducts }], 
-    });
-    return saleAndProduct;
-  } catch (error) {
-    throw new CustomErrors(500, error.message);
-  }
-};
-
 const findSaleAndRelatedProductsBySellerId = async (sellerId) => {
   try {
     const saleAndProduct = await Sale.findAll({ 
-      where: { sellerId }, include: [{ model: SalesProducts }], 
+      where: { sellerId },
+      include: [{ model: SalesProducts }], 
     });
     return saleAndProduct;
   } catch (error) {
@@ -103,7 +93,6 @@ const deleteOneSale = async (id) => {
 module.exports = {
   create, 
   readOne,
-  findSaleAndRelatedProductsByUserId,
   findSaleAndRelatedProductsBySellerId, 
   readAllByUserId, 
   updateSaleStatus, 

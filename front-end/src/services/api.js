@@ -30,6 +30,12 @@ export const getRequest = async (endpoint, token) => {
   return data;
 };
 
+export const patchSaleStatus = async (endpoint, body, token) => {
+  setToken(token);
+  const { data } = await api.patch(endpoint, body);
+  return data;
+};
+
 export const destroy = async (endpoint, body) => {
   const { data } = await api.delete(endpoint, body);
 

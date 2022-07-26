@@ -9,10 +9,14 @@ const OrdersPage = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const getCustomerOrders = async () => {
-    const { token } = JSON.parse(localStorage.getItem('user'));
-    const ordersData = await getRequest('/customer/orders', token);
-    setOrders(ordersData);
-    setIsLoading(false);
+    try {
+      const { token } = JSON.parse(localStorage.getItem('user'));
+      const ordersData = await getRequest('/customer/orders', token);
+      setOrders(ordersData);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

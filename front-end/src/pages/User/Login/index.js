@@ -3,7 +3,6 @@ import { Redirect, useHistory } from 'react-router-dom';
 import logo from '../../../images/logo.png';
 import EmailPasswordValidation from '../../../util/EmailPasswordValidation';
 import Button from '../../../components/Button';
-import TextInput from '../../../components/TextInput';
 import { postRequest } from '../../../services/api';
 import './style.css';
 
@@ -11,6 +10,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLogged, setIsLogged] = useState(false);
+  const [userRole, setUserRole] = useState('');
   const [failedTryLogin, setFailedTryLogin] = useState(false);
   const [buttonLoginDisabled, setbuttonLoginDisabled] = useState(true);
 
@@ -25,6 +25,7 @@ const Login = () => {
       const data = await postRequest(endpoint, { email, password });
 
       localStorage.setItem('user', JSON.stringify({ ...data }));
+      setUserRole(data.role);
       setIsLogged(true);
     } catch (error) {
       setFailedTryLogin(true);
@@ -34,7 +35,10 @@ const Login = () => {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user')) || {};
-    if (user.token) setIsLogged(true);
+    if (user.token) {
+      setUserRole(user.role);
+      setIsLogged(true);
+    }
   }, []);
 
   useEffect(() => {
@@ -44,26 +48,24 @@ const Login = () => {
     else setbuttonLoginDisabled(true);
   }, [email, password]);
 
-  if (isLogged) return <Redirect to="/customer/products" />;
+  if (isLogged && userRole === 'seller') return <Redirect to="/seller/orders" />;
+  if (isLogged && userRole === 'customer') return <Redirect to="/customer/products" />;
 
   return (
     <section className="login-area">
       <img src={ logo } alt="Logo do App de Delivery" />
       <form>
         <h1>App de Delivery</h1>
-        <TextInput
-          label="E-mail"
-          testId="common_login__input-email"
+        <input
+          data-testid="common_login__input-email"
           onChange={ ({ target: { value } }) => setEmail(value) }
-          password={ false }
           placeholder="seu-email@site.com.br"
           value={ email }
         />
-        <TextInput
-          label="Senha"
-          testId="common_login__input-password"
+        <input
+          data-testid="common_login__input-password"
           onChange={ ({ target: { value } }) => setPassword(value) }
-          password
+          type="password"
           placeholder="Sua senha"
           value={ password }
         />

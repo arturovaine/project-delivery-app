@@ -1,12 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { patchSaleStatus } from '../../../../../services/api';
 
 const SaleDetail = ({ orderNumber, sellerName, date, status }) => {
+  const [orderStatus, setOrderStatus] = useState(status);
+  const [isBtnDisabled, setIsBtnDisabled] = useState(true);
+
   const transformDate = () => {
     const nDate = date.split('T')[0];
 
     return nDate.split('-').reverse().join('/');
   };
+
+  const checkStatus = () => {
+    if (orderStatus === 'Em Trânsito') {
+      setIsBtnDisabled(false);
+    }
+  };
+
+  const onClickReceive = async () => {
+    const statusC = { status: 'Entregue' };
+    const { token } = JSON.parse(localStorage.getItem('user'));
+    await patchSaleStatus(`/sellers/update/${orderNumber}`, statusC, token);
+    setOrderStatus(statusC.status);
+  };
+
+  useEffect(() => {
+    checkStatus();
+  });
 
   return (
     <div>
@@ -40,7 +61,8 @@ const SaleDetail = ({ orderNumber, sellerName, date, status }) => {
         <button
           type="button"
           data-testid="customer_order_details__button-delivery-check"
-          disabled
+          disabled={ isBtnDisabled }
+          onClick={ onClickReceive }
         >
           MARCAR COMO ENTREGUE
         </button>
