@@ -5,6 +5,7 @@ import { getRequest } from '../../../services/api';
 import Load from '../../../components/Load';
 import Counter from '../../../components/Counter';
 import ProductCartButton from '../../../components/ProductCartButton';
+import './style.css';
 
 const ProductsPage = () => {
   const [productsList, setProductsList] = useState([]);
@@ -46,7 +47,7 @@ const ProductsPage = () => {
       <div>
         {
           productsList.map((product) => (
-            <div key={ product.id }>
+            <div className="product-card-container" key={ product.id }>
               <Link
                 to={ `/customer/orders/${product.id}` }
               >
