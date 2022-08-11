@@ -1,11 +1,13 @@
 # Projeto App de Delivery
 
-App de delivery para uma distribuidora de bebidas, com fluxos de clientes, vendedores, e administradores.
+Desenvolvimento full stack (back-end e front-end) de App de delivery para uma distribuidora de bebidas, com fluxos de clientes, vendedores, e administradores.
+
+Stacks utilizadas: React, MySQL, Sequelize, JWT, Chai, Sinon.
 
 
 <details>
   <summary>
-    <strong>Fluxos de navegação</strong>
+    <strong>Fluxos de navegação</strong> (clientes, vendedores, administradores)
   </summary><br>
 
   - **Fluxo Comum**
@@ -38,7 +40,7 @@ App de delivery para uma distribuidora de bebidas, com fluxos de clientes, vende
 
 <details>
   <summary>
-    <strong>Checklist de features</strong>
+    <strong>Product backlog</strong> (checklist de features)
   </summary><br>
 
 - [x] 1 - Criar tela de `login` acessível pelos endpoints `/` e `/login`
@@ -90,7 +92,7 @@ App de delivery para uma distribuidora de bebidas, com fluxos de clientes, vende
 
 <details>
   <summary>
-    <strong>Overview da aplicação</strong>
+    <strong>Overview da aplicação</strong> (explicação adicional)
   </summary><br>
 
   Projeto realizado em grupo no curso de Desenvolvimento Web Full Stack - Trybe. 
