@@ -3,6 +3,11 @@
 App de delivery para uma distribuidora de bebidas, com fluxos de clientes, vendedores, e administradores.
 
 
+<details>
+  <summary>
+    <strong>Fluxos de navegação</strong>
+  </summary><br>
+
   - **Fluxo Comum**
     - (1) Tela de Login (`01login.test`); 
     - (2) Tela de Registro (`02register.test`).
@@ -26,7 +31,15 @@ App de delivery para uma distribuidora de bebidas, com fluxos de clientes, vende
   - **Testes da aplicação**
     - (11) Testes de cobertura (`12coverage_tests.test`).
 
-<br />
+
+</details>
+
+
+
+<details>
+  <summary>
+    <strong>Checklist de features</strong>
+  </summary><br>
 
 - [x] 1 - Criar tela de `login` acessível pelos endpoints `/` e `/login`
 - [x] 2 - Criar elementos da tela de `login` com os `data-testids` do protótipo
@@ -73,21 +86,20 @@ App de delivery para uma distribuidora de bebidas, com fluxos de clientes, vende
 - [ ] 43 - Criar `testes` que cubram no mínimo 60 por cento dos arquivos do front-end e back-end em src com um mínimo de 150 linhas cobertas em cada
 - [ ] 44 - Criar `testes` que cubram no mínimo 90 por cento dos arquivos do front-end e back-end em src com um mínimo de 225 linhas cobertas em cada
 
-
----
-
-# Entregas
+</details>
 
 <details>
   <summary>
-    <strong>👨‍💻 O que foi desenvolvido</strong>
+    <strong>Overview da aplicação</strong>
   </summary><br>
 
   Projeto realizado em grupo no curso de Desenvolvimento Web Full Stack - Trybe. 
   - Criação e integração de, tanto o back-end quanto o front-end, criando uma plataforma de delivery de cerveja. 🍻
 
 
-  **Desenvolvimento de um app de delivery para uma distribuidora de bebidas. Contexto da entrega:**
+  **Desenvolvimento de um app de delivery para uma distribuidora de bebidas**
+  
+  **Contexto da entrega:**
 
   A distribuidora de cervejas da dona Tereza está se informatizando! 🚀 Seu negócio, antes focado em um local específico da cidade, passou a receber uma quantidade massiva de encomendas de outros pontos, expandindo sua atuação via delivery. Isso tudo graças ao excelente preço das bebidas e atendimento da equipe de vendas.
 
@@ -99,15 +111,13 @@ App de delivery para uma distribuidora de bebidas, com fluxos de clientes, vende
   - Fazer a comunicação entre clientes e pessoas vendedoras: a pessoa cliente faz o pedido via "carrinho de compras" e a pessoa vendedora aprova, prepara e envia esse pedido. Quando o produto é recebido por quem comprou, essa pessoa marca o pedido como "recebido". Ambos devem possuir detalhes sobre seus pedidos;
   - Se a pessoa cliente faz o pedido, o mesmo deve aparecer para a pessoa vendedora em seu dash de pedidos após a atualização da página. A pessoa cliente, por sua vez, deve ter as informações sobre seu pedido quando sua página for atualizada, ou seja, ter informações se o pedido está sendo preparado ou se já saiu pra entrega;
 
-  Sua equipe, que já possui uma boa experiência com desenvolvimento, em pouco tempo apresentou um [protótipo](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=0%3A1) e um [Diagrama de ER](./assets/readme/eer.png) conforme imagem:
+  Como briefing do projeto, foi apresentado inicialmente um [protótipo](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=0%3A1) e um [Diagrama de ER](./assets/readme/eer.png) conforme imagem:
 
   ![Diagrama de ER](./assets/readme/eer.png)
 
-  A ideia da sua equipe já pressupõe alguma escalabilidade, dado que foram estabelecidas algumas entidades genéricas no banco de dados e componentização no front-end, para que, caso o sistema cresça, não seja muito difícil mudar e ampliar essa estrutura.
+  A proposta já pressupõe alguma escalabilidade, dado que foram estabelecidas algumas entidades genéricas no banco de dados e componentização no front-end, para que, caso o sistema cresça, não seja muito difícil mudar e ampliar essa estrutura.
 
   **A proposta encantou, mas dona Tereza quer ver o negócio em ação! Ela está disposta a pagar por um MVP do projeto e vocês fecharam o negócio com um prazo combinado para entrega.**
-
-  Agora é mãos à obra! Vamos começar?
 
 </details>
 
@@ -347,7 +357,14 @@ describe(requirement(1), () => {
 
 ---
 
+
 # Requisitos
+
+
+<details>
+  <summary>
+    <strong>Detalhamento dos requisitos a atender</strong>
+  </summary><br>
 
 ## `Fluxo Comum`
 
@@ -372,7 +389,7 @@ Todos os testes desse arquivo:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador navegará para o endereço do host utilizando o endpoint `/`;
@@ -387,11 +404,11 @@ Todos os testes desse arquivo:
 
 **Observações técnicas**
 
-- Se oriente pela seguinte tela do protótipo: [`Comum / Login`](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=977%3A392);
+- Observar a seguinte tela do protótipo: [`Comum / Login`](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=977%3A392);
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador buscará pelos elementos fundamentais aos demais testes.
@@ -411,7 +428,7 @@ Todos os testes desse arquivo:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador testará 3 situações aleatórias diferentes (uma para cada validação) de maneira isolada, sendo uma delas válida;
@@ -431,7 +448,7 @@ Todos os testes desse arquivo:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador tentará fazer login através do botão de login, com dados aleatórios válidos;
@@ -455,7 +472,7 @@ Sua página deve ser capaz de utilizar os dados do cliente previstos em `db.exam
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador tentará fazer a ação de login com dados válidos. **Esse teste pressupõe a validade de anteriores**;
@@ -482,7 +499,7 @@ Todos os testes desse arquivo:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador navegará para o endereço do host utilizando o endpoint `/register`;
@@ -496,11 +513,11 @@ Todos os testes desse arquivo:
 
 **Observações técnicas**
 
-- Se oriente pela seguinte tela do protótipo: [`Comum / Cadastro`](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=977%3A414);
+- Observar a seguinte tela do protótipo: [`Comum / Cadastro`](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=977%3A414);
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador buscará pelos elementos fundamentais aos demais testes.
@@ -521,7 +538,7 @@ Todos os testes desse arquivo:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador testará 4 situações aleatórias diferentes (uma para cada validação) de maneira isolada, sendo uma delas válida;
@@ -543,7 +560,7 @@ Sua página deve ser capaz de cadastrar pessoas usuárias com dados válidos:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador tentará fazer a ação de cadastro com dados aleatórios válidos, validando-os posteriormente no banco de dados;
@@ -563,7 +580,7 @@ Sua página deve ser capaz de cadastrar pessoas usuárias com dados válidos:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador tentará realizar o fluxo de cadastro anterior duas vezes, com um dado gerado aleatoriamente.
@@ -595,11 +612,11 @@ Todos os testes desse arquivo:
 
 **Observações técnicas**
 
-- Se oriente pela seguinte tela do protótipo: [`Comum / Produtos`](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=977%3A416);
+- Observar a seguinte tela do protótipo: [`Comum / Produtos`](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=977%3A416);
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   O avaliador **buscará pelos elementos** fundamentais aos demais testes:
@@ -616,14 +633,14 @@ Todos os testes desse arquivo:
 
 **Observações técnicas**
 
-- Se oriente pela seguinte tela do protótipo: [`Comum / Produtos`](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=977%3A416);
+- Observar a seguinte tela do protótipo: [`Comum / Produtos`](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=977%3A416);
 - Deve-se construir um total de `11` cards, cada um correspondente a um item da tabela produtos, conforme a tabela `products` do modelo em `db.example.sql`.
 - Os `data-testid` desses itens devem terminar com o id de cada produto, exemplo: 
   - `customer_products__element-card-price-1`; `customer_products__element-card-price-2`; ...; `customer_products__element-card-price-11`.
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   **O avaliador buscará pelos elementos relacionados a todos os cards de produtos:**
@@ -658,7 +675,7 @@ Todos os testes desse arquivo:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador testará se o `local storage` contém os dados da pessoa usuária após o login;
@@ -680,7 +697,7 @@ Todos os testes desse arquivo:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador testará se os dados de cada card condizem com os dados do banco de dados.
@@ -705,7 +722,7 @@ Todos os testes desse arquivo:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador vai utilizar um recorte aleatório de produtos para fazer o pedido (esses dados são imprimidos durante o teste);
@@ -728,7 +745,7 @@ Todos os testes desse arquivo:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador testará a existência de um botão de carrinho com um valor total válido e que seja capaz de nos direcionar à tela de checkout.
@@ -755,14 +772,14 @@ Todos os testes desse arquivo:
 
 **Observações técnicas**
 
-- Se oriente pela seguinte tela do protótipo: [`Comum / Checkout`](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=983%3A622);
+- Observar a seguinte tela do protótipo: [`Comum / Checkout`](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=983%3A622);
 - A quantidade de itens no checkout deve corresponder à quantidade de itens no recorte aleatório de produtos utilizados no teste;
 - Aqui, a referência de identificação dos campos das linhas da tabela deve ser o índice (`index`) da matriz (`array`) dos produtos no carrinho de compras. Por exemplo:
   - `element-order-table-name-0`; `element-order-table-name-1`; ...; `element-order-table-name-x`.
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador testará os data-testids referentes aos itens do carrinho e demais elementos.
@@ -779,7 +796,7 @@ Todos os testes desse arquivo:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador testará se os itens contidos na venda correspondem aos itens do checkout
@@ -796,7 +813,7 @@ Todos os testes desse arquivo:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador tentará realizar a remoção de itens validando-os na tabela.
@@ -815,7 +832,7 @@ Todos os testes desse arquivo:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador verificará se ao final do checkout é disparado uma request `POST` com uma autorização (`token`) válida, que retorne status `201 - Created`;
@@ -852,7 +869,7 @@ Todos os testes desse arquivo:
  
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador testará se, após realizado o checkout, as alterações constarão no banco de dados.
@@ -880,13 +897,13 @@ Todos os testes desse arquivo:
 
 **Observações técnicas**
 
-- Se oriente pela seguinte tela do protótipo: [`Comum / Meus Pedidos`](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=977%3A637);
+- Observar a seguinte tela do protótipo: [`Comum / Meus Pedidos`](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=977%3A637);
 - Os `data-testid` desses itens devem terminar com o `id` de cada venda no banco. Por exemplo: 
   - `customer_products__element-order-date-1`; `customer_products__element-order-date-2`; ...; `customer_products__element-order-date-x`.
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador vai testar se existem `data-testids` para os dez primeiros itens contidos na tabela 'sales';
@@ -904,7 +921,7 @@ Todos os testes desse arquivo:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador vai testar se os dados associados aos `data-testids` dos dez primeiros itens coincidem com os do banco de dados.
@@ -923,7 +940,7 @@ Todos os testes desse arquivo:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador acessará a tela de detalhes do último pedido pela tela de pedidos, após o checkout do mesmo. Por exemplo:
@@ -948,11 +965,11 @@ Todos os testes desse arquivo:
 
 **Observações técnicas**
 
-- Se oriente pela seguinte tela do protótipo: [`Comum / Detalhes do Pedido`](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=977%3A659);
+- Observar a seguinte tela do protótipo: [`Comum / Detalhes do Pedido`](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=977%3A659);
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador testará os `data-testids` referentes aos itens da venda e demais elementos.
@@ -969,7 +986,7 @@ Todos os testes desse arquivo:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador testará se os dados contidos nos campos das linhas (produtos relacionados à venda), tal como demais valores (id do pedido, nome da pessoa vendedora, data de pedido, status da venda, preço total) conferem com os dados da venda feita anteriormente.
@@ -1002,13 +1019,13 @@ Todos os testes desse arquivo:
 
 **Observações técnicas**
 
-- Se oriente pela seguinte tela do protótipo: [`P. Vend / Pedidos`](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=982%3A372);
+- Observar a seguinte tela do protótipo: [`P. Vend / Pedidos`](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=982%3A372);
 - Os `data-testid` desses itens devem terminar com o `id` de cada venda no banco. Por exemplo: 
   - `seller_orders__element-order-date-1`; `seller_orders__element-order-date-2`; ...; `seller_orders__element-order-date-x`.
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador vai testar se existem `data-testids` para os dez primeiros itens contidos na tabela 'sales'.
@@ -1027,7 +1044,7 @@ Todos os testes desse arquivo:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador vai testar se os dados associados aos `data-testids` dos dez primeiros itens batem com os do banco de dados.
@@ -1047,7 +1064,7 @@ Todos os testes desse arquivo:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador acessará a tela de detalhes do último pedido pela tela de pedidos, após o checkout do mesmo. Por exemplo:
@@ -1073,11 +1090,11 @@ Todos os testes desse arquivo:
 
 **Observações técnicas**
 
-- Se oriente pela seguinte tela do protótipo: [`P. Vend / Detalhes do Pedido`](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=982%3A443);
+- Observar a seguinte tela do protótipo: [`P. Vend / Detalhes do Pedido`](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=982%3A443);
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador testará os `data-testids` referentes aos itens da venda e demais elementos.
@@ -1094,7 +1111,7 @@ Todos os testes desse arquivo:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador testará se os dados contidos nos campos das linhas (produtos relacionados à venda), tal como demais valores (id do pedido, nome da pessoa vendedora, data de pedido, status da venda, preço total) conferem com os dados da venda feita anteriormente.
@@ -1127,7 +1144,7 @@ A validação de status consiste em uma série de testes que devem assegurar que
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador testará se a alteração do pedido é persistente após atualizar a página fazendo o processo de logout/login.
@@ -1160,7 +1177,7 @@ Todos os testes desse arquivo:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador verificará se, ao alterar o status do pedido na tela da pessoa vendedora, o mesmo também é alterado na tela de detalhes do pedido do cliente após atualização das páginas fazendo o processo de logout/login nas mesmas.
@@ -1179,7 +1196,7 @@ Todos os testes desse arquivo:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador verificará se, ao alterar o status do pedido na tela da pessoa vendedora, o mesmo também é alterado na tela de pedidos do cliente após atualização das páginas fazendo o processo de logout/login nas mesmas.
@@ -1204,7 +1221,7 @@ Todos os testes desse arquivo:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
 - O avaliador verificará se, ao alterar o status do pedido na tela do cliente, o mesmo também é alterado na tela de detalhes do pedido da pessoa vendedora após atualização das páginas fazendo o processo de logout/login nas mesmas.
@@ -1232,12 +1249,12 @@ Todos os testes desse arquivo devem:
 
 **Observações técnicas**
 
-- Se oriente pela seguinte tela do protótipo: [`P. Adm. / Gerenciamento`](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=990%3A739);
+- Observar a seguinte tela do protótipo: [`P. Adm. / Gerenciamento`](https://www.figma.com/file/cNKu41RhnPIgNqrbMTzmUI/Delivery-App-new-trybeer?node-id=990%3A739);
   - Em um primeiro momento, não serão considerados os itens da tabela de usuários. Foque aqui em consolidar o formulário de cadastro.
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador testará os `data-testids` referentes aos elementos do formulário de cadastro.
@@ -1260,7 +1277,7 @@ Todos os testes desse arquivo devem:
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador testará 4 situações aleatórias diferentes (uma para cada validação) de maneira isolada, sendo uma delas válida;
@@ -1285,7 +1302,7 @@ Aqui, **a rota de cadastro deve ser diferente da rota de cadastro comum**, pois 
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador tentará fazer a ação de cadastro com uma lista de pessoas (impressa durante o teste) com dados aleatórios válidos, validando-os posteriormente no banco de dados;
@@ -1304,7 +1321,7 @@ Sua página deve impedir o cadastro de pessoas com o mesmo Nome ou E-mail.
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador tentará realizar o fluxo de cadastro anterior duas vezes, mas com apenas uma pessoa usuária gerada aleatoriamente.
@@ -1326,7 +1343,7 @@ Sua página deve impedir o cadastro de pessoas com o mesmo Nome ou E-mail.
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador testará os data-testids referentes aos elementos da tabela de pessoas usuárias;
@@ -1345,7 +1362,7 @@ Sua página deve impedir o cadastro de pessoas com o mesmo Nome ou E-mail.
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - O avaliador tentará realizar a remoção de itens validando-os na tabela.
@@ -1388,7 +1405,7 @@ Garanta que tanto o seu `front-end` quanto `back-end` possuem testes que cubram 
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - Serão validados os dados de cobertura no `front-end` e no `back-end`;
@@ -1409,7 +1426,7 @@ Garanta que tanto o seu `front-end` quanto `back-end` possuem testes que cubram 
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - Serão validados os dados de cobertura no `front-end` e no `back-end`;
@@ -1430,7 +1447,7 @@ Garanta que tanto o seu `front-end` quanto `back-end` possuem testes que cubram 
 
 <details>
   <summary>
-    <b>O que será avaliado</b>
+    <b>Pontos a verificar:</b>
   </summary>
 
   - Serão validados os dados de cobertura no `front-end` e no `back-end`;
@@ -1451,3 +1468,5 @@ Um bom exercício aqui é utilizar seu aprendizado de [`Heroku`](https://app.bet
 Um ponto importante aqui, é que também é necessário subir um banco de dados no Heroku para levar seus dados para a nuvem. O Heroku conta com o [`ClearDB`](https://devcenter.heroku.com/articles/cleardb) *(Artigo em inglês)*, para te ajudar nessa tarefa!
 
 ---
+
+</details>
