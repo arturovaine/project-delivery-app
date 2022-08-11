@@ -1,46 +1,93 @@
-# Boas vindas ao repositório do projeto App de Delivery!
+# Projeto App de Delivery
 
-Para realizar o projeto, atente-se a cada passo descrito a seguir, e se tiver qualquer dúvida, nos envie por _Slack_! #vqv 🚀
+App de delivery para uma distribuidora de bebidas, com fluxos de clientes, vendedores, e administradores.
 
-Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu projeto a partir deste repositório, utilizando uma branch específica e um _Pull Request_ para colocar seus códigos.
+
+  - **Fluxo Comum**
+    - (1) Tela de Login (`01login.test`); 
+    - (2) Tela de Registro (`02register.test`).
+
+  - **Fluxo do Cliente**
+    - (3) Tela de Produtos (`03customer_products.test`); 
+    - (4) Tela de Checkout (`04customer_checkout.test`); 
+    - (5) Tela de Pedidos (`05customer_orders.test`); 
+    - (6) Tela de Detalhes do Pedido (`06customer_order_details.test`).
+
+  - **Fluxo da Pessoa Vendedora**
+    - (7) Tela de Pedidos (`07seller_orders.test`); 
+    - (8) Tela de Detalhes/Controle do Pedido (`08seller_order_details.test`).
+
+  - **Validação do Status do Pedido**
+    - (9) Teste de status (`09customer_seller_status_sync.test`); 
+
+  - **Fluxo da Pessoa Administradora**
+    - (10) Tela de gerenciamento de usuários (`11admin_manage_users.test`).
+
+  - **Testes da aplicação**
+    - (11) Testes de cobertura (`12coverage_tests.test`).
+
+<br />
+
+- [x] 1 - Criar tela de `login` acessível pelos endpoints `/` e `/login`
+- [x] 2 - Criar elementos da tela de `login` com os `data-testids` do protótipo
+- [x] 3 - Desenvolver tela de `login` que restrinja login com dados mal-formatados
+- [x] 4 - Desenvolver a tela de `login` de maneira que ela impossibilite o login com dados válidos, porém inexistentes no banco de dados
+- [x] 5 - Desenvolver tela de `login` de maneira que ela possibilite fazer o login com dados válidos e existentes no banco de dados
+- [x] 6 - Criar tela de `registro` acessível via endpoint `/register` no navegador e pelo botão de registro na tela de login
+- [x] 7 - Criar os elementos da tela de `registro` com os `data-testids` do protótipo
+- [x] 8 - Desenvolver tela de `registro` que impossibilite cadastro com dados mal-formatados
+- [x] 9 - Desenvolver tela de `registro` que possibilite cadastro com dados válidos
+- [x] 10 - Desenvolver tela de `registro` que impossibilite cadastro de um usuário já existente
+- [x] 11 - Criar tela de `produtos do cliente` contendo uma barra de navegação - navbar - que servirá também para demais telas das pessoas usuárias
+- [x] 12 - Desenvolver tela de `produtos do cliente` criando os demais elementos com os `data-testids` do protótipo
+- [x] 13 - Desenvolver tela de `produtos do cliente` que pressuponha dados válidos da pessoa usuária armazenados no localStorage
+- [x] 14 - Desenvolver tela de `produtos do cliente` de forma que os cards de todos os produtos pré-cadastrados contenham os valores corretos
+- [x] 15 - Desenvolver tela de `produtos do cliente` de forma que o preço total esteja correto após a adição de itens aleatórios
+- [x] 16 - Desenvolver a tela de `produtos do cliente` de forma que haja um botão de carrinho que redirecionará para a tela de checkout caso itens sejam adicionados
+- [x] 17 - Criar tela de `checkout do cliente` com elementos com os `data-testids` do protótipo
+- [x] 18 - Desenvolver tela de `checkout do cliente` de forma a possuir os dados corretos do carrinho e preço total
+- [x] 19 - Desenvolver tela de `checkout do cliente` de forma que seja possível remover itens do carrinho
+- [x] 20 - Desenvolver a tela de `checkout do cliente` de forma a nos redirecionar para a tela de detalhes do pedido feito após a finalização do mesmo
+- [x] 21 - Desenvolver tela de `checkout do cliente` de forma a gerar uma nova venda na tabela sales, assim como relações em salesProducts ao finalizar o pedido
+- [x] 22 - Criar uma tela de `pedidos do cliente` com elementos a partir dos `data-testids` do protótipo
+- [x] 23 - Desenvolver tela de `pedidos do cliente` de forma a conter a lista de pedidos do mesmo com os dados corretos
+- [x] 24 - Desenvolver tela de `pedidos do cliente` de forma a dar acesso à tela de detalhes de um pedido ao clicar no card do mesmo
+- [x] 25 - Criar tela de `detalhes do pedido do cliente` com elementos a partir dos `data-testids` do protótipo
+- [x] 26 - Desenvolver tela de `detalhes do pedido do cliente` de forma a possuir os dados corretos da venda
+- [x] 27 - Criar tela de `pedidos da pessoa vendedora` com elementos a partir dos `data-testids` do protótipo
+- [x] 28 - Desenvolver tela de `pedidos da pessoa vendedora` de forma a conter a lista de pedidos do mesmo com os dados corretos
+- [x] 29 - Desenvolver tela de `pedidos da pessoa vendedora` de forma a dar acesso à tela de detalhes de um pedido ao clicar no card do mesmo
+- [x] 30 - Criar tela de `detalhes do pedido da pessoa vendedora` com elementos a partir dos `data-testids` do protótipo
+- [x] 31 - Desenvolver tela de `detalhes do pedido da pessoa vendedora` de forma a possuir os dados corretos da venda
+- [x] 32 - Desenvolver tela de `detalhes do pedido da pessoa vendedora` de forma a ser capaz de alterar o status do pedido
+- [ ] 33 - Garantir que o `status do pedido` atualizado na tela de `detalhes do pedido da pessoa vendedora` seja refletido na tela de detalhes do pedido do cliente após atualização das páginas
+- [x] 34 - Garantir que o `status do pedido` atualizado na tela de `detalhes do pedido da pessoa vendedora` seja refletido na tela de lista de pedidos do cliente após atualização das páginas
+- [ ] 35 - Garantir que o `status do pedido` atualizado na tela de `detalhes do pedido do cliente` seja refletido na tela de lista de pedidos da pessoa vendedora após atualização das páginas
+- [ ] 36 - Criar tela de `pessoa administradora` com elementos a partir dos `data-testids` do protótipo
+- [ ] 37 - Desenvolver tela da `pessoa administradora` de forma a validar o formulário de cadastro
+- [ ] 38 - Desenvolver tela da `pessoa administradora` de forma que seja possível cadastrar pessoas usuárias válidas
+- [ ] 39 - Desenvolver tela da `pessoa administradora` de forma que ela impossibilite o cadastro de pessoas usuárias já existentes
+- [ ] 40 - Desenvolver tela da `pessoa administradora` de forma que haja uma tabela de pessoas usuárias cadastradas
+- [ ] 41 - Desenvolver tela da `pessoa administradora` de forma que seja possível deletar pessoas usuárias na tabela
+- [ ] 42 - Criar `testes` que cubram no mínimo 30 por cento dos arquivos do front-end e back-end em src com um mínimo de 75 linhas cobertas em cada
+- [ ] 43 - Criar `testes` que cubram no mínimo 60 por cento dos arquivos do front-end e back-end em src com um mínimo de 150 linhas cobertas em cada
+- [ ] 44 - Criar `testes` que cubram no mínimo 90 por cento dos arquivos do front-end e back-end em src com um mínimo de 225 linhas cobertas em cada
+
 
 ---
 
-## Termos de acordo
-
-Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta e do Manual da Pessoa Estudante da Trybe.
-
-# Entregáveis
+# Entregas
 
 <details>
   <summary>
-    <strong>🤷🏽‍♀️ Como entregar</strong>
+    <strong>👨‍💻 O que foi desenvolvido</strong>
   </summary><br>
 
-  - **Cada grupo terá uma branch específica** no formato `main-group-X`. Ex: `main-group-1`; `main-group-2`; etc;
+  Projeto realizado em grupo no curso de Desenvolvimento Web Full Stack - Trybe. 
+  - Criação e integração de, tanto o back-end quanto o front-end, criando uma plataforma de delivery de cerveja. 🍻
 
-  - **Para entregar o seu projeto você deverá criar um `Pull Request` base neste repositório no formato `[MAIN GROUP X] [BASE]`**. Seu `Pull Request` deve apontar da branch `main-group-X` para a branch `main` (que será sua PR principal) e deve agregar todo o trabalho do seu grupo para avaliação no final do desenvolvimento;
 
-  - **Cada feature/fix/etc deve ser desenvolvida em uma nova branch**, cujo formato preferencialmente deve ser `main-group-X-<alteração>-<especificação>`. Ex: `main-group-1-feat-login-form`. Isso ajudará tanto o seu time quanto a equipe de instrução a localizar seus trabalhos no projeto;
-
-  - **No término do projeto, cada feature/fix/etc deve ser mergeada _(preferencialmente via PR, com code review e aprovação de todo o grupo)_ com a branch principal do grupo**, onde ocorrerá a avaliação. Ex: `main-group-1-feat-login-form` deve ser mergeado com `main-group-1`;
-
-  - **Cada PR deve, preferencialmente, ter o título no formato `[MAIN GROUP X] [CONTEXTO] [ALTERAÇÃO] [DESCRIÇÃO]`**. Ex: `[MAIN GROUP 1] [API] [FEAT] [LOGIN]`; `[MAIN GROUP 1] [FRONT] [FEAT] [LOGIN-FORM]`; etc. Isso ajudará tanto o seu time quanto a equipe de instrução a localizar seus trabalhos no projeto.
-
-  > Lembre-se que você pode consultar nosso conteúdo sobre [Git & GitHub](https://app.betrybe.com/course/4d67f5b4-34a6-489f-a205-b6c7dc50fc16/) e nosso [Blog - Git & GitHub](https://blog.betrybe.com/tecnologia/git-e-github/) sempre que precisar!
-
-</details>
-
-<details>
-  <summary>
-    <strong>👨‍💻 O que deverá ser desenvolvido</strong>
-  </summary><br>
-
-  Esse será o seu projeto mais completo até agora! Nessa aplicação, seu grupo será responsável por criar e integrar tanto o back-end quanto o front-end, criando uma plataforma de delivery de cerveja. 🍻
-
-  O projeto não é só codar, mas também é trabalhar em equipe, aprender e se divertir muito! 
-
-  **Neste projeto, seu grupo deve desenvolver um app de delivery para uma distribuidora de bebidas. Veja abaixo o contexto da entrega que deve ser feita:**
+  **Desenvolvimento de um app de delivery para uma distribuidora de bebidas. Contexto da entrega:**
 
   A distribuidora de cervejas da dona Tereza está se informatizando! 🚀 Seu negócio, antes focado em um local específico da cidade, passou a receber uma quantidade massiva de encomendas de outros pontos, expandindo sua atuação via delivery. Isso tudo graças ao excelente preço das bebidas e atendimento da equipe de vendas.
 
@@ -64,123 +111,11 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
 
 </details>
 
-<details>
-  <summary>
-    <strong>🗓 Data de Entrega</strong>
-  </summary><br>
-  
-  - Este projeto é em grupo;
-  - Serão `11` dias de projeto;
-  - Data de entrega para avaliação final do projeto: `01/08/2022 14:10`.
+<br />
 
-</details>
+---
 
-# Orientações
-
-<details>
-  <summary>
-    <strong>‼️ Antes de começar a desenvolver</strong>
-  </summary><br>
-
-  1. Clone o repositório
-
-  - Use o comando: `git clone git@github.com:tryber/sd-016-a-project-delivery-app.git`.
-  - Entre na pasta do repositório que você acabou de clonar:
-    - `cd sd-016-a-project-delivery-app`
-  - Vá para a branch do seu grupo, com `git checkout main-group-XX && git pull`, onde `XX` é o número do seu grupo. Exemplos: `main-group-1`, `main-group-22`.
-
-  2. Instale as dependências
-
-  - Para isso, use o seguinte comando: `npm install`
-
-  3. Faça alterações separadas por novas branchs, criadas a partir da branch `main-group-XX`. Lembre-se de criar uma nova branch para cada demanda.
-
-  - Verifique se você está na branch `main-group-XX`
-    - Exemplo: `git branch`
-  - Se não estiver, mude para a branch `main-group-XX`
-    - Exemplo: `git checkout main-group-XX && git pull`
-  - Agora, crie uma branch para a demanda que você vai desenvolver do seu projeto
-    - Você deve criar uma branch com uma breve descrição da demanda a ser desenvolvida
-    - Exemplo: `git checkout -b main-group-XX-cria-campo-de-input`
-
-  4. Adicione as mudanças ao _stage_ do Git e faça um `commit`
-
-  - Verifique se as mudanças ainda não estão no _stage_
-    - Exemplo: `git status` (devem aparecer listadas as novas alterações em vermelho)
-  - Adicione o novo arquivo ao _stage_ do Git
-    - Exemplo:
-      - `git add .` (adicionando todas as mudanças - _que estavam em vermelho_ - ao stage do Git)
-      - `git status` (deve aparecer listado o arquivo _joaozinho/README.md_ em verde)
-  - Faça o `commit` inicial
-    - Exemplo:
-      - `git commit -m 'iniciando o projeto x'` (fazendo o primeiro commit)
-      - `git status` (deve aparecer uma mensagem tipo _nothing to commit_ )
-
-  5. Adicione a sua branch com o novo `commit` ao repositório remoto
-
-  - Usando o exemplo anterior: `git push -u origin main-group-XX-cria-campo-de-input`
-
-  6. Crie um novo `Pull Request` _(PR)_
-
-  - Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-016-a-project-delivery-app/pulls)
-  - Clique no botão verde _"New pull request"_
-  - Clique na caixa de seleção _"Compare"_ e escolha a branch do grupo, `main-group-XX`, e a sua branch **com atenção**
-  - Coloque um título para a sua _Pull Request_
-    - Exemplo: _"[GRUPO XX] Cria tela de busca"_
-  - Clique no botão verde _"Create pull request"_
-  - Adicione uma descrição para o _Pull Request_ e clique no botão verde _"Create pull request"_
-  - **Não se preocupe em preencher mais nada por enquanto!**
-  - Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-016-a-project-delivery-app/pulls) e confira que o seu _Pull Request_ está criado
-
-  7. Assim que aprovado por pelo menos duas pessoas do seu grupo e com o _Linter_ adereçado, acesse **SEU** _Pull Request_ e clique no botão _"Merge pull request"_
-
-</details>
-
-<details>
-  <summary>
-    <strong>⌨️ Durante o desenvolvimento</strong>
-  </summary><br>
-
-  - Faça `commits` das alterações que você realizar no código regularmente;
-
-  - Lembre-se de sempre após um (ou alguns) `commits` atualizar o repositório remoto;
-
-  - Os comandos que você utilizará com mais frequência são:
-    1. `git status` _(para verificar o que está em vermelho - fora do stage - e o que está em verde - no stage)_
-    2. `git add` _(para adicionar arquivos ao stage do Git)_
-    3. `git commit` _(para criar um commit com os arquivos que estão no stage do Git)_
-    4. `git push -u origin nome-da-branch` _(para enviar o commit para o repositório remoto na primeira vez que fizer o `push` de uma nova branch)_
-    5. `git push` _(para enviar o commit para o repositório remoto após o passo anterior)_
-
-</details>
-
-<details>
-  <summary>
-    <strong>🤝 Depois de terminar o desenvolvimento (opcional)</strong>
-  </summary><br>
-
-  Para sinalizar que o seu projeto está pronto para _"Code Review"_, faça o seguinte:
-
-  - Vá até a página **DO SEU** _Pull Request_, adicione a label de _"code-review"_ e marque seus colegas:
-
-    - No menu à direita, clique no _link_ **"Labels"** e escolha a _label_ **code-review**;
-
-    - No menu à direita, clique no _link_ **"Assignees"** e escolha **o seu usuário**;
-
-    - No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-016-a`.
-
-  Caso tenha alguma dúvida, [aqui tem um video explicativo](https://vimeo.com/362189205).
-
-</details>
-
-<details>
-  <summary>
-    <strong>🕵🏿 Revisando um pull request</strong>
-  </summary><br>
-
-  Use o conteúdo sobre [Code Review](https://app.betrybe.com/course/real-life-engineer/code-review) para te ajudar a revisar os _Pull Requests_.
-
-</details>
+# Informações gerais
 
 <details>
   <summary>
@@ -270,15 +205,6 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
 
 </details>
 
-<details>
-  <summary>
-    <strong>🛠 Testes</strong>
-  </summary><br>
-
-  **⚠️ Atenção: O avaliador automático não necessariamente avalia seu projeto na ordem em que os requisitos aparecem no readme. Isso acontece para deixar o processo de avaliação mais rápido. Então, não se assuste se isso acontecer, ok?**
-
-</details>
-
 </details>
 
 <details>
@@ -312,7 +238,7 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
 
 <details>
   <summary>
-    <strong>🏗️ Preparando o campo e iniciando o projeto</strong>
+    <strong>🏗️ Preparação de início do projeto</strong>
   </summary><br>
 
 - ⚠️ O processo de avaliação completo é bem demorado (em torno de 20 minutos), por isso, **é importante que os testes sejam feitos por partes, localmente, antes de serem enviados para o avaliador!**. Para isso, utilize os comandos de teste local (`npm run test:dev*`) apresentados em scripts relevantes do `package.json` principal!
@@ -417,35 +343,9 @@ describe(requirement(1), () => {
 
 </details>
 
-<details>
-  <summary>
-    <strong>🤲 Escrevendo seus testes</strong>
-  </summary>
+<br />
 
-  - Escreva testes unitários e sinta-se livre para alterar a UI. Contudo, respeite os atributos `data-testid`, pois eles serão usados na correção do projeto.
-
-</details>
-
-<details>
-  <summary>
-    <strong>🗣 Nos dê feedbacks sobre o projeto!</strong>
-  </summary><br>
-
-  Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência preenchendo o formulário. **Leva menos de 3 minutos!**
-
-  Link: [Formulário de avaliação do projeto](https://be-trybe.typeform.com/to/ZTeR4IbH)
-
-</details>
-
-<details>
-  <summary>
-    <strong>🗂 Compartilhe seu portfólio!</strong>
-  </summary><br>
-
-  Você sabia que o LinkedIn é a principal rede social profissional e compartilhar o seu aprendizado lá é muito importante para quem deseja construir uma carreira de sucesso? Compartilhe esse projeto no seu LinkedIn, marque o perfil da Trybe (@trybe) e mostre para a sua rede toda a sua evolução.
-
-</details>
-
+---
 
 # Requisitos
 
@@ -463,7 +363,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  1 - Crie uma tela de login que deve ser acessível pelos endpoints / e /login no navegador
+####  1 - Criar uma tela de login que deve ser acessível pelos endpoints / e /login no navegador
 
 **Observações técnicas**
 
@@ -483,7 +383,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  2 - Crie os elementos da tela de login com os data-testids disponíveis no protótipo
+####  2 - Criar os elementos da tela de login com os data-testids disponíveis no protótipo
 
 **Observações técnicas**
 
@@ -500,7 +400,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  3 - Desenvolva a tela de login de maneira que ela impossibilite o login com dados mal formatados
+####  3 - Desenvolver a tela de login de maneira que ela impossibilite o login com dados mal formatados
 
 **Observações técnicas**
 
@@ -523,7 +423,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  4 - Desenvolva a tela de login de maneira que ela impossibilite o login com dados inexistentes no banco de dados
+####  4 - Desenvolver a tela de login de maneira que ela impossibilite o login com dados inexistentes no banco de dados
 
 **Observações técnicas**
 
@@ -544,7 +444,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  5 - Desenvolva a tela de login de maneira que ela possibilite fazer o login com dados válidos e existentes no banco de dados
+####  5 - Desenvolver a tela de login de maneira que ela possibilite fazer o login com dados válidos e existentes no banco de dados
 
 **Observações técnicas**
 
@@ -573,7 +473,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  6 - Crie uma tela de registro que deve ser acessível via endpoint /register no navegador e pelo botão de registro na tela de login
+####  6 - Criar uma tela de registro que deve ser acessível via endpoint /register no navegador e pelo botão de registro na tela de login
 
 **Observações técnicas**
 
@@ -592,7 +492,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  7 - Crie os elementos da tela de registro com os data-testids disponíveis no protótipo
+####  7 - Criar os elementos da tela de registro com os data-testids disponíveis no protótipo
 
 **Observações técnicas**
 
@@ -609,7 +509,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  8 - Desenvolva a tela de registro de maneira que ela impossibilite o cadastro com dados mal formatados
+####  8 - Desenvolver a tela de registro de maneira que ela impossibilite o cadastro com dados mal formatados
 
 **Observações técnicas**
 
@@ -633,7 +533,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  9 - Desenvolva a tela de registro de maneira que ela possibilite cadastrar com dados válidos
+####  9 - Desenvolver a tela de registro de maneira que ela possibilite cadastrar com dados válidos
 
 **Observações técnicas**
 
@@ -655,7 +555,7 @@ Sua página deve ser capaz de cadastrar pessoas usuárias com dados válidos:
 
 ---
 
-####  10 - Desenvolva a tela de registro de maneira que ela impossibilite o cadastro de um usuário já existente
+####  10 - Desenvolver a tela de registro de maneira que ela impossibilite o cadastro de um usuário já existente
 
 **Observações técnicas**
 
@@ -691,7 +591,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  11 - Crie uma tela de produtos do cliente contendo uma barra de navegação - navbar -, que servirá também para demais telas das pessoas usuárias
+####  11 - Criar uma tela de produtos do cliente contendo uma barra de navegação - navbar -, que servirá também para demais telas das pessoas usuárias
 
 **Observações técnicas**
 
@@ -712,7 +612,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  12 - Desenvolva a tela de produtos do cliente criando os demais elementos com os data-testids disponíveis no protótipo
+####  12 - Desenvolver a tela de produtos do cliente criando os demais elementos com os data-testids disponíveis no protótipo
 
 **Observações técnicas**
 
@@ -738,7 +638,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  13 - Desenvolva a tela de produtos do cliente de forma que ela pressuponha dados válidos da pessoa usuária armazenados no localStorage
+####  13 - Desenvolver a tela de produtos do cliente de forma que ela pressuponha dados válidos da pessoa usuária armazenados no localStorage
 
 **Observações técnicas**
 
@@ -770,7 +670,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  14 - Desenvolva a tela de produtos do cliente de forma que os cards de todos os produtos pré-cadastrados contenham os valores corretos
+####  14 - Desenvolver a tela de produtos do cliente de forma que os cards de todos os produtos pré-cadastrados contenham os valores corretos
 
 **Observações técnicas**
 
@@ -790,7 +690,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  15 - Desenvolva a tela de produtos do cliente de forma que o preço total esteja correto após a adição de itens aleatórios
+####  15 - Desenvolver a tela de produtos do cliente de forma que o preço total esteja correto após a adição de itens aleatórios
 
 **Observações técnicas**
 
@@ -819,7 +719,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  16 - Desenvolva a tela de produtos do cliente de forma que haja um botão de carrinho que redirecionará para a tela de checkout caso itens sejam adicionados
+####  16 - Desenvolver a tela de produtos do cliente de forma que haja um botão de carrinho que redirecionará para a tela de checkout caso itens sejam adicionados
 
 **Observações técnicas**
 
@@ -851,7 +751,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  17 - Crie uma tela de checkout do cliente com elementos com os data-testids disponíveis no protótipo
+####  17 - Criar uma tela de checkout do cliente com elementos com os data-testids disponíveis no protótipo
 
 **Observações técnicas**
 
@@ -871,7 +771,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  18 - Desenvolva a tela de checkout do cliente de forma a possuir os dados corretos do carrinho e preço total
+####  18 - Desenvolver a tela de checkout do cliente de forma a possuir os dados corretos do carrinho e preço total
 
 **Observações técnicas**
 
@@ -888,7 +788,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  19 - Desenvolva a tela de checkout do cliente de forma que seja possível remover itens do carrinho
+####  19 - Desenvolver a tela de checkout do cliente de forma que seja possível remover itens do carrinho
 
 **Observações técnicas**
 
@@ -906,7 +806,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  20 - Desenvolva a tela de checkout do cliente de forma a nos redirecionar para a tela de detalhes do pedido após a finalização do mesmo
+####  20 - Desenvolver a tela de checkout do cliente de forma a nos redirecionar para a tela de detalhes do pedido após a finalização do mesmo
 
 **Observações técnicas**
 
@@ -925,7 +825,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  21 - Desenvolva a tela de checkout do cliente de forma a gerar uma nova venda na tabela sales, assim como relações em salesProducts, ao finalizar o pedido
+####  21 - Desenvolver a tela de checkout do cliente de forma a gerar uma nova venda na tabela sales, assim como relações em salesProducts, ao finalizar o pedido
 
 **Observações técnicas**
 
@@ -976,7 +876,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  22 - Crie uma tela de pedidos do cliente com elementos a partir dos data-testids disponíveis no protótipo
+####  22 - Criar uma tela de pedidos do cliente com elementos a partir dos data-testids disponíveis no protótipo
 
 **Observações técnicas**
 
@@ -996,7 +896,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  23 - Desenvolva a tela de pedidos do cliente de forma a conter a lista de pedidos do mesmo com os dados corretos
+####  23 - Desenvolver a tela de pedidos do cliente de forma a conter a lista de pedidos do mesmo com os dados corretos
 
 **Observações técnicas**
 
@@ -1014,7 +914,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  24 - Desenvolva a tela de pedidos do cliente de forma a dar acesso à tela de detalhes de um pedido ao clicar no card do mesmo
+####  24 - Desenvolver a tela de pedidos do cliente de forma a dar acesso à tela de detalhes de um pedido ao clicar no card do mesmo
 
 **Observações técnicas**
 
@@ -1044,7 +944,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  25 - Crie uma tela de detalhes do pedido do cliente com elementos a partir dos data-testids disponíveis no protótipo
+####  25 - Criar uma tela de detalhes do pedido do cliente com elementos a partir dos data-testids disponíveis no protótipo
 
 **Observações técnicas**
 
@@ -1061,7 +961,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  26 - Desenvolva a tela de detalhes do pedido do cliente de forma a possuir os dados corretos da venda
+####  26 - Desenvolver a tela de detalhes do pedido do cliente de forma a possuir os dados corretos da venda
 
 **Observações técnicas**
 
@@ -1098,7 +998,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  27 - Crie uma tela de pedidos da pessoa vendedora com elementos a partir dos data-testids disponíveis no protótipo
+####  27 - Criar uma tela de pedidos da pessoa vendedora com elementos a partir dos data-testids disponíveis no protótipo
 
 **Observações técnicas**
 
@@ -1119,7 +1019,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  28 - Desenvolva a tela de pedidos da pessoa vendedora de forma a conter a lista de pedidos do mesmo com os dados corretos
+####  28 - Desenvolver a tela de pedidos da pessoa vendedora de forma a conter a lista de pedidos do mesmo com os dados corretos
 
 **Observações técnicas**
 
@@ -1138,7 +1038,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  29 - Desenvolva a tela de pedidos da pessoa vendedora de forma a dar acesso à tela de detalhes de um pedido ao clicar no card do mesmo
+####  29 - Desenvolver a tela de pedidos da pessoa vendedora de forma a dar acesso à tela de detalhes de um pedido ao clicar no card do mesmo
 
 **Observações técnicas**
 
@@ -1169,7 +1069,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  30 - Crie uma tela de detalhes do pedido da pessoa vendedora com elementos a partir dos data-testids disponíveis no protótipo
+####  30 - Criar uma tela de detalhes do pedido da pessoa vendedora com elementos a partir dos data-testids disponíveis no protótipo
 
 **Observações técnicas**
 
@@ -1186,7 +1086,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  31 - Desenvolva a tela de detalhes do pedido da pessoa vendedora de forma a possuir os dados corretos da venda
+####  31 - Desenvolver a tela de detalhes do pedido da pessoa vendedora de forma a possuir os dados corretos da venda
 
 **Observações técnicas**
 
@@ -1209,7 +1109,7 @@ A validação de status consiste em uma série de testes que devem assegurar que
 
 ---
 
-####  32 - Desenvolva a tela de detalhes do pedido da pessoa vendedora de forma a ser capaz de alterar o status do pedido
+####  32 - Desenvolver a tela de detalhes do pedido da pessoa vendedora de forma a ser capaz de alterar o status do pedido
 
 **Observações técnicas**
 
@@ -1328,7 +1228,7 @@ Todos os testes desse arquivo devem:
 
 ---
 
-####  36 - Crie uma tela de pessoa administradora com elementos a partir dos data-testids disponíveis no protótipo
+####  36 - Criar uma tela de pessoa administradora com elementos a partir dos data-testids disponíveis no protótipo
 
 **Observações técnicas**
 
@@ -1346,7 +1246,7 @@ Todos os testes desse arquivo devem:
 
 ---
 
-####  37 - Desenvolva a tela da pessoa administradora de forma a validar o formulário de cadastro
+####  37 - Desenvolver a tela da pessoa administradora de forma a validar o formulário de cadastro
 
 **Observações técnicas**
 
@@ -1372,7 +1272,7 @@ Todos os testes desse arquivo devem:
 
 ---
 
-####  38 - Desenvolva a tela da pessoa administradora de forma que seja possível cadastrar pessoas usuárias válidas
+####  38 - Desenvolver a tela da pessoa administradora de forma que seja possível cadastrar pessoas usuárias válidas
 
 **Observações técnicas**
 
@@ -1396,7 +1296,7 @@ Aqui, **a rota de cadastro deve ser diferente da rota de cadastro comum**, pois 
 
 ---
 
-####  39 - Desenvolva a tela da pessoa administradora de forma que ela impossibilite o cadastro de pessoas usuárias já existentes
+####  39 - Desenvolver a tela da pessoa administradora de forma que ela impossibilite o cadastro de pessoas usuárias já existentes
 
 **Observações técnicas**
 
@@ -1476,7 +1376,7 @@ Antes de todos os testes, esse arquivo deve rodar, em ambas aplicações, o coma
 
 - O avaliador também retornará erro e não fará a avaliação do requisito caso os testes estejam dando **erros de promessas que não são tratadas** (`UnhandledPromiseRejectionWarning`), por isso, busquem sempre fazer o tratamento correto de funções assíncronas durante o projeto, tal como nos testes.
 
-####  42 - Crie testes que cubram no mínimo 30 por cento dos arquivos do front-end e back-end em src com um mínimo de 75 linhas cobertas em cada
+####  42 - Criar testes que cubram no mínimo 30 por cento dos arquivos do front-end e back-end em src com um mínimo de 75 linhas cobertas em cada
 
 **Observações técnicas**
 
@@ -1497,7 +1397,7 @@ Garanta que tanto o seu `front-end` quanto `back-end` possuem testes que cubram 
 
 ---
 
-####  43 - (`Bônus`) Crie testes que cubram no mínimo 60 por cento dos arquivos do front-end e back-end em src com um mínimo de 150 linhas cobertas em cada
+####  43 - (`Bônus`) Criar testes que cubram no mínimo 60 por cento dos arquivos do front-end e back-end em src com um mínimo de 150 linhas cobertas em cada
 
 **Observações técnicas**
 
@@ -1518,7 +1418,7 @@ Garanta que tanto o seu `front-end` quanto `back-end` possuem testes que cubram 
 
 ---
 
-####  44 - (`Bônus`) Crie testes que cubram no mínimo 90 por cento dos arquivos do front-end e back-end em src com um mínimo de 225 linhas cobertas em cada
+####  44 - (`Bônus`) Criar testes que cubram no mínimo 90 por cento dos arquivos do front-end e back-end em src com um mínimo de 225 linhas cobertas em cada
 
 **Observações técnicas**
 
@@ -1540,7 +1440,7 @@ Garanta que tanto o seu `front-end` quanto `back-end` possuem testes que cubram 
 
 ---
 
-## `Extra não avaliativo`
+## `Extra`
 
 ### Realizar o deploy do projeto back-end e front-end
 
@@ -1551,11 +1451,3 @@ Um bom exercício aqui é utilizar seu aprendizado de [`Heroku`](https://app.bet
 Um ponto importante aqui, é que também é necessário subir um banco de dados no Heroku para levar seus dados para a nuvem. O Heroku conta com o [`ClearDB`](https://devcenter.heroku.com/articles/cleardb) *(Artigo em inglês)*, para te ajudar nessa tarefa!
 
 ---
-
-### Qual poderia ser o próximo passo? 🤔
-
-Se seu projeto estiver concluído, considere a expansão que ele pode passar ao longo do tempo. Esse projeto consegue expandir suas entidades? Consegue ter outros módulos (um web-chat, uma área de gerenciar vendedores, instâncias para lojas)?
-
-É super importante que tenhamos seguido todos os princípios e boas práticas de programação (como `SOLID`, por exemplo), tal como uma boa modelagem do banco de dados que torne possível gerar escala.
-
-Evidentemente, nada fica ideal em um primeiro momento, mas quanto mais conseguirmos trabalhar no nosso projeto pensando a manutenção dele no longo prazo, mais fácil fica de programarmos coisas novas partindo do nosso código legado, por isso é importante sempre revisar nosso trabalho!
