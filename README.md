@@ -4,7 +4,7 @@ Desenvolvimento full stack (back-end e front-end) de App de delivery para uma di
 
 Stacks utilizadas: React, MySQL, Sequelize, JWT, Chai, Sinon.
 
-
+  
 <details>
   <summary>
     <strong>Fluxos de navegação</strong> (clientes, vendedores, administradores)
